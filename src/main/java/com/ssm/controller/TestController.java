@@ -42,4 +42,25 @@ public class TestController {
     public String comquery(){
         return "comquery";
     }
+    
+
+    @RequestMapping(value = "/y-tabs")
+    public String page4(){
+
+        return "y-tabs";
+    }
+
+    @RequestMapping(value = "/y-page1")
+    public String page1(){
+
+        return "y-page1";
+    }
+
+    @RequestMapping(value = "/y-page2")
+    public String page2(){
+
+        return "y-page2";
+    }
+    
+    
 }
