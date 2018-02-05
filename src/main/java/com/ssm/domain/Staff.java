@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by dllo on 18/2/5.
  */
 public class Staff implements Serializable {
-    private String id;
+    private int id;
     private String name;
     private String password;
     private String loginName;
@@ -15,19 +15,18 @@ public class Staff implements Serializable {
     public Staff() {
     }
 
-    public Staff(String id, String name, String password, String loginName, String email) {
-        this.id = id;
+    public Staff( String name, String password, String loginName, String email) {
         this.name = name;
         this.password = password;
         this.loginName = loginName;
         this.email = email;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

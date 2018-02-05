@@ -25,11 +25,11 @@ public class StaffTest {
     @Test
     public void insertStaff(){
 
-        String str = UUID.randomUUID().toString().replace("-","");
+//        String str = UUID.randomUUID().toString().replace("-","");
+//
+//        System.out.println(str);
 
-        System.out.println(str);
-
-        Staff staff = new Staff(str,"张四","123","1346764724@qq.com","2941018735@qq.com");
+        Staff staff = new Staff("张四","123","1346764724@qq.com","2941018735@qq.com");
 
         System.out.println(staffMapper.insertStaff(staff));
     }
