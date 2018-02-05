@@ -30,8 +30,8 @@
 <body>
 <div id="layout1" class="mini-layout" style="width:100%;height:100%;">
     <div class="header" region="north" height="70" showSplit="false"
-         showHeader="false" style=">
-        <h1 style="margin:0;padding:15px;cursor:default;></h1>
+         showHeader="false" style="">
+        <h1 style="margin:0;padding:15px;cursor:default"></h1>
     </div>
     <div title="center" region="center" bodyStyle="overflow:hidden;">
         <div class="mini-splitter" style="width:100%;height:100%;">

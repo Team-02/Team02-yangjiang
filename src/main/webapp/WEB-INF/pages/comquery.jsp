@@ -105,8 +105,9 @@
         <div id="toolBar" class="mini-toolbar" style="width: 100%;border-bottom: 0px">
             <table>
                 <tr>
-                    <td id="button1">
-                        <a class="mini-button" onclick="search()">查询</a>
+                    <td colspan="4" class="content" style="text-align: right">
+
+                        <button class="btn1" type="button" name="search"><img src="/imgs/query.png" style="width: 16px;height: 16px">查询</button>
                     </td>
                 </tr>
             </table>

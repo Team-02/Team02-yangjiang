@@ -2,6 +2,7 @@ package com.ssm.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by dllo on 18/2/4.
@@ -42,23 +43,18 @@ public class TestController {
     public String comquery(){
         return "comquery";
     }
-    
-
     @RequestMapping(value = "/y-tabs")
     public String page4(){
-
         return "y-tabs";
     }
 
     @RequestMapping(value = "/y-page1")
+    @ResponseBody
     public String page1(){
-
         return "y-page1";
     }
-
     @RequestMapping(value = "/y-page2")
     public String page2(){
-
         return "y-page2";
     }
     

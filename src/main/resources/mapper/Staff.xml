@@ -21,5 +21,8 @@
         <include refid="staffColumns"/>)
         VALUES (#{id},#{name},#{password},#{loginName},#{email})
     </insert>
+    <select id="selectStaffTotal" resultType="java.lang.Integer">
+        SELECT * FROM team02_staff
+    </select>
 
 </mapper>
