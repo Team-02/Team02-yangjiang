@@ -1,0 +1,3 @@
+[
+	{title: "流程查询", url: "/comquery", refreshOnClick: true},
+]

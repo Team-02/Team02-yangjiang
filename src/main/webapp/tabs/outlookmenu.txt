@@ -1,0 +1,10 @@
+﻿[
+	{ id: "user", text: "个人中心", iconCls: "icon-add"},
+	{ id: "editUser",  text: "综合管理"},
+	{ id: "addRighte", pid: "editUser", text: "任务管理", iconCls: "Note", url: "/comqueryhome", iconPosition: "top" },
+	{ id: "right", text: "个人工作平台"},
+	{ id: "addRight", pid: "right", text: "任务管理", iconCls: "Note", url: "/home", iconPosition: "top" },
+
+
+
+]
