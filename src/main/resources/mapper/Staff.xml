@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.mapper.StaffMapper">
+
+    <resultMap id="staffMap" type="com.ssm.domain.Staff">
+        <id property="id" column="staff_Id"/>
+        <result property="name" column="staff_name"/>
+        <result property="password" column="staff_Pwd"/>
+        <result property="loginName" column="staff_loginName"/>
+        <result property="email" column="staff_email"/>
+    </resultMap>
+
+    <sql id="staffColumns">
+        staff_Id,staff_name,staff_Pwd,staff_loginName,staff_email
+    </sql>
+
+    <insert id="insertStaff" parameterType="com.ssm.domain.Staff">
+        INSERT INTO team02_staff (
+        <include refid="staffColumns"/>)
+        VALUES (#{id},#{name},#{password},#{loginName},#{email})
+    </insert>
+
+</mapper>
