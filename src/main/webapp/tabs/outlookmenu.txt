@@ -5,8 +5,8 @@
 	{ id: "right", text: "个人工作平台"},
 	{ id: "addRight", pid: "right", text: "任务管理", iconCls: "Note", url: "/home", iconPosition: "top" },
 	
-	{ id: "right", text: "科研项目管理"},
-	{ id: "ky", pid: "right", text: "科研项目申报与评审", url: "/y-tabs"},
+	{ id: "keyan", text: "科研项目管理"},
+	{ id: "ky", pid: "keyan", text: "科研项目申报与评审", url: "/y-tabs"},
 
 
 

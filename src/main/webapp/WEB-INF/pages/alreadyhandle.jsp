@@ -11,6 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <link href="/css/demo.css" rel="stylesheet" type="text/css">
+
     <script src="/scripts/boot.js" type="text/javascript"></script>
     <script src="/js/ajaxfileupload.js" type="text/javascript"></script>
     <script src="/js/jquery.cookie.js" type="text/javascript"></script>
@@ -45,6 +46,12 @@
             text-align: right;
             width: 100px;
         }
+        html body .user_add .mini-buttonedit-icon {
+            background: url(/scripts/miniui/res/images/user_add.png) no-repeat 50% 50%;
+        }
+        html body .group_add .mini-buttonedit-icon {
+            background: url(/scripts/miniui/res/images/group_add.png) no-repeat 50% 50%;
+        }
 
         /*.high{*/
         /*height: 80px;*/
@@ -74,12 +81,12 @@
             <tr>
                 <td class="t">申请人</td>
                 <td>
-                    <input value="" allowInput="false" id="btnEdit1" class="mini-buttonedit"
+                    <input value="" allowInput="false" id="btnEdit1" class="mini-buttonedit user_add"
                            onbuttonclick="onButtonEdit1" name="a" textName="b" style="width: 400px"/>
                 </td>
                 <td class="t">所属部门</td>
                 <td>
-                    <input value="" allowInput="false" id="btnEdit2" class="mini-buttonedit"
+                    <input value="" allowInput="false" id="btnEdit2" class="mini-buttonedit group_add"
                            onbuttonclick="onButtonEdit1" name="a" textName="b" style="width: 400px"/>
                 </td>
             </tr>

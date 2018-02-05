@@ -46,6 +46,12 @@
             width: 100px;
         }
 
+        html body .user_add .mini-buttonedit-icon {
+            background: url(/scripts/miniui/res/images/user_add.png) no-repeat 50% 50%;
+        }
+        html body .group_add .mini-buttonedit-icon {
+            background: url(/scripts/miniui/res/images/group_add.png) no-repeat 50% 50%;
+        }
         /*.high{*/
         /*height: 80px;*/
         /*vertical-align: middle;*/
@@ -70,7 +76,7 @@
                 <td><input class="mini-datepicker" name="birthday" style="width: 400px"/></td>
                 <td class="t">申请人</td>
                 <td>
-                    <input value="" allowInput="false" id="btnEdit1" class="mini-buttonedit"
+                    <input value="" allowInput="false" id="btnEdit1" class="mini-buttonedit user_add"
                            onbuttonclick="onButtonEdit1" name="a" textName="b" style="width: 400px"/>
                 </td>
                 <td class="t">关键字</td>
@@ -84,7 +90,7 @@
                 </td>
                 <td class="t">所属部门</td>
                 <td>
-                    <input value="" allowInput="false" id="btnEdit2" class="mini-buttonedit"
+                    <input value="" allowInput="false" id="btnEdit2" class="mini-buttonedit group_add"
                            onbuttonclick="onButtonEdit1" name="a" textName="b" style="width: 400px"/>
                 </td>
                 <td class="t">是否可以打印</td>

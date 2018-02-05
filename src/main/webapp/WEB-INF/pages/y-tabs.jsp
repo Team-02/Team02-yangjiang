@@ -13,7 +13,7 @@
 <body>
 
 <div id="tabs1" class="mini-tabs" activeIndex="0" style="width:100%;height:100%;"
-    url="../../data/tabs.txt" ontabload="onTabLoad" onactivechanged="onActiveChanged">
+    url="/tabs/keyan.txt" ontabload="onTabLoad" onactivechanged="onActiveChanged">
 </div>
 
 <script type="text/javascript">
