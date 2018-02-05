@@ -18,7 +18,7 @@
         table, td {
             font-size: small;
             font-family: "Heiti SC";
-            background-color: #cbe1fa;
+            background: linear-gradient(#c0e7ff, #cfe4ff, #86b0eb, #b2caff,#c0e7ff );
             border: 2px solid white;
             border-collapse: collapse;
             padding: 5px;

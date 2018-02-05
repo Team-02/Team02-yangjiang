@@ -19,14 +19,19 @@
             height: 100%;
             overflow: hidden;
         }
+        .header{
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-image: url(../../imgs/GSP.png);
+        }
     </style>
 </head>
 <body>
 <div id="layout1" class="mini-layout" style="width:100%;height:100%;">
     <div class="header" region="north" height="70" showSplit="false"
          showHeader="false">
-        <h1 style="margin:0;padding:15px;cursor:default;
-        font-family:'Trebuchet MS',Arial,sans-serif;">采购监管平台系统</h1>
+        <h1 style="margin:0;padding:15px;cursor:default;"></h1>
     </div>
     <div title="center" region="center" bodyStyle="overflow:hidden;">
         <div class="mini-splitter" style="width:100%;height:100%;">
