@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-  Date: 18/1/19哈哈
-  Time: 10:37哈哈
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,7 +11,7 @@
         table,td{
             font-size: small;
             font-family:"Heiti TC";
-            background: linear-gradient(#c0e7ff, #cfe4ff, #86b0eb, #b2caff,#c0e7ff );
+            background: #E0F1FA;
             border: 2px solid white;
             border-collapse: collapse;
             padding: 5px;
@@ -36,6 +29,9 @@
             text-align: right;
             width: 150px;
         }
+        div{
+            background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA,#E0F1FA );
+        }
     </style>
 
 
@@ -45,101 +41,119 @@
     <tr>
         <td colspan="4">当前位置:科研项目申报 >> 项目基本信息</td>
     </tr>
-    <tr>
-        <td colspan="4">项目名称</td>
-    </tr>
-    <tr>
-        <td class="d">项目名称<span style="color:red">※</span></td>
-        <td colspan="3"><input type="text"></td>
-    </tr>
-    <tr>
-        <td class="d">项目申报单位<span style="color:red">※</span></td>
-        <td>
-            <input allowInput="false" id="btnEdit1" class="mini-buttonedit"
-                   onbuttonclick="onButtonEdit1" name="a" textName="b" style="width: 100%"/>
-        </td>
-        <td class="d">联合申报单位<span style="color:red">※</span></td>
-        <td>
-            <input allowInput="false" id="btnEdit2" class="mini-buttonedit"
-                   onbuttonclick="onButtonEdit2" name="a" textName="b" style="width: 100%"/>
-        </td>
-    </tr>
-    <tr class="high">
-        <td class="d" >目的<span style="color:red">※</span></td>
-        <td colspan="3">
-            <input class="mini-textarea" style="width:100%;height:60px;"/>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="4">与核电生产运营安全性、可靠性、经济的适应分析</td>
-    </tr>
-    <tr>
-        <td class="d">安全性</td>
-        <td><input type="text"></td>
-        <td class="d">可靠性</td>
-        <td><input type="text"></td>
-    </tr>
-    <tr>
-        <td class="d">经济性</td>
-        <td><input type="text"></td>
-        <td class="d">其他</td>
-        <td><input type="text"></td>
-    </tr>
-    <tr>
-        <td colspan="4">其他信息</td>
-    </tr>
-    <tr class="high">
-        <td class="d">成果应用</td>
-        <td colspan="3"><input type="text"></td>
-    </tr>
-    <tr class="high">
-        <td class="d">实际用户</td>
-        <td colspan="3">
-            <input class="mini-textarea" style="width:100%;height:60px;"/>
-        </td>
-    </tr>
-    <tr class="high">
-        <td class="d">潜在用户</td>
-        <td colspan="3">
-            <input class="mini-textarea" style="width:100%;height:60px;"/>
-        </td>
-    </tr>
-    <tr class="high">
-        <td class="d">项目完成周期</td>
-        <td colspan="3">
-            <input class="mini-textarea" style="width:100%;height:60px;"/>
-        </td>
-    </tr>
-    <tr class="high">
-        <td class="d">项目内容路径简介</td>
-        <td colspan="3">
-            <input class="mini-textarea" style="width:100%;height:60px;"/>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="4">预算信息</td>
-    </tr>
-    <tr>
-        <td class="d">总预算*</td>
-        <td>
-            <input style="width: 100%" class="mini-textbox" vtype="float" required="true"/>
-        </td>
-        <td class="d">公司经费</td>
-        <td>
-            <input style="width: 100%" class="mini-textbox" vtype="float" required="true"/>
-        </td>
-    </tr>
-    <tr>
-        <td class="d">外部支持经费</td>
-        <td>
-            <input style="width: 100%" class="mini-textbox" vtype="float" required="true"/>
-        </td>
-        <td class="d">国家经费</td>
-        <td>
-            <input style="width: 100%" class="mini-textbox" vtype="float" required="true"/>
-        </td>
-    </tr>
 </table>
+<div id="panel1" class="mini-panel" title="项目名称" iconCls="icon-add" style="width:100%;height:auto; "
+     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="false"
+     collapseOnTitleClick="true">
+    <table border="0" cellpadding="1" cellspacing="2">
+        <tr>
+            <td class="d">项目名称<span style="color:red">※</span></td>
+            <td colspan="3"><input type="text"></td>
+        </tr>
+        <tr>
+            <td class="d">项目申报单位<span style="color:red">※</span></td>
+            <td>
+                <input allowInput="false" id="btnEdit1" class="mini-buttonedit"
+                       onbuttonclick="onButtonEdit1" name="a" textName="b" style="width: 100%"/>
+            </td>
+            <td class="d">联合申报单位<span style="color:red">※</span></td>
+            <td>
+                <input allowInput="false" id="btnEdit2" class="mini-buttonedit"
+                       onbuttonclick="onButtonEdit2" name="a" textName="b" style="width: 100%"/>
+            </td>
+        </tr>
+        <tr class="high">
+            <td class="d" >目的<span style="color:red">※</span></td>
+            <td colspan="3">
+                <input class="mini-textarea" style="width:100%;height:60px;"/>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="panel2" class="mini-panel" title="与核电生产运营安全性、可靠性、经济的适应分析" iconCls="icon-add" style="width:100%;height:auto; background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA,#E0F1FA );"
+     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="false"
+     collapseOnTitleClick="true">
+    <table border="0" cellpadding="1" cellspacing="2">
+
+        <tr>
+            <td class="d">安全性</td>
+            <td><input type="text"></td>
+            <td class="d">可靠性</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td class="d">经济性</td>
+            <td><input type="text"></td>
+            <td class="d">其他</td>
+            <td><input type="text"></td>
+        </tr>
+    </table>
+</div>
+
+<div id="panel3" class="mini-panel" title="其他信息" iconCls="icon-add" style="width:100%;height:auto; background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA,#E0F1FA );"
+     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="false"
+     collapseOnTitleClick="true">
+    <table border="0" cellpadding="1" cellspacing="2">
+        <tr class="high">
+            <td class="d">成果应用</td>
+            <td colspan="3"><input type="text"></td>
+        </tr>
+        <tr class="high">
+            <td class="d">实际用户</td>
+            <td colspan="3">
+                <input class="mini-textarea" style="width:100%;height:60px;"/>
+            </td>
+        </tr>
+        <tr class="high">
+            <td class="d">潜在用户</td>
+            <td colspan="3">
+                <input class="mini-textarea" style="width:100%;height:60px;"/>
+            </td>
+        </tr>
+        <tr class="high">
+            <td class="d">项目完成周期</td>
+            <td colspan="3">
+                <input class="mini-textarea" style="width:100%;height:60px;"/>
+            </td>
+        </tr>
+        <tr class="high">
+            <td class="d">项目内容路径简介</td>
+            <td colspan="3">
+                <input class="mini-textarea" style="width:100%;height:60px;"/>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="panel4" class="mini-panel" title="预算信息" iconCls="icon-add" style="width:100%;height:auto; background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA,#E0F1FA );"
+     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="false"
+     collapseOnTitleClick="true">
+    <table border="0" cellpadding="1" cellspacing="2">
+        <tr>
+            <td class="d">总预算*</td>
+            <td>
+                <input style="width: 100%" class="mini-textbox" vtype="float" required="true"/>
+            </td>
+            <td class="d">公司经费</td>
+            <td>
+                <input style="width: 100%" class="mini-textbox" vtype="float" required="true"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="d">外部支持经费</td>
+            <td>
+                <input style="width: 100%" class="mini-textbox" vtype="float" required="true"/>
+            </td>
+            <td class="d">国家经费</td>
+            <td>
+                <input style="width: 100%" class="mini-textbox" vtype="float" required="true"/>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
 
 
 <script>
@@ -150,8 +164,8 @@
 
         var btnEdit = this;
         mini.open({
-            url:"selectstaff",
-            title: "项目申报单位",
+            url:"../../html/SelectGridWindow.html",
+            title: "选择部门经理",
             width: 650,
             height: 380,
             ondestroy: function (action) {
@@ -161,8 +175,8 @@
                     var data = iframe.contentWindow.GetData();
                     data = mini.clone(data);    //必须克隆
                     if (data) {
-                        btnEdit.setValue(data.staff_Id);
-                        btnEdit.setText(data.staff_name);
+                        btnEdit.setValue(data.id);
+                        btnEdit.setText(data.name);
                     }
                 }
 
@@ -174,7 +188,7 @@
 
         var btnEdit = this;
         mini.open({
-            url:"selectstaff",
+            url:"../../html/SelectGridWindow.html",
             title: "选择部门经理",
             width: 650,
             height: 380,
@@ -198,7 +212,7 @@
 
 
 
-        mini.parse();
+    mini.parse();
 
     function submitForm() {
         var form = new mini.Form("#form1");

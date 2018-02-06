@@ -18,7 +18,7 @@
         table, td {
             font-size: small;
             font-family: "Heiti TC";
-            background: linear-gradient(#c0e7ff, #cfe4ff, #86b0eb, #b2caff, #c0e7ff);
+            background: #E0F1FA;
             border: 2px solid white;
             border-collapse: collapse;
             padding: 5px;
@@ -44,6 +44,9 @@
         }
         html body .group_add .mini-buttonedit-icon {
             background: url(/scripts/miniui/res/images/group_add.png) no-repeat 50% 50%;
+        }
+        div{
+            background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA,#E0F1FA );
         }
     </style>
 
