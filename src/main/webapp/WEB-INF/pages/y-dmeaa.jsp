@@ -18,7 +18,7 @@
         table,td{
             font-size: small;
             font-family:"Heiti TC";
-            background-color: #bbc8d7;
+            background: #E0F1FA;
             border: 2px solid white;
             border-collapse: collapse;
             padding: 5px;
