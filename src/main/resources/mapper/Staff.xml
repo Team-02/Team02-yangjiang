@@ -15,7 +15,14 @@
     <sql id="staffColumns">
         staff_Id,staff_name,staff_Pwd,staff_loginName,staff_email
     </sql>
-
+    <sql id="staffselect">
+        <where>
+            1 = 1
+            <if test="beanList !=null and beanList != ''">
+                AND staff_name LIKE '%${name}%'
+            </if>
+        </where>
+    </sql>
     <insert id="insertStaff" parameterType="com.ssm.domain.Staff">
         INSERT INTO team02_staff (
         <include refid="staffColumns"/>)
@@ -25,7 +32,9 @@
         SELECT * FROM team02_staff
     </select>
     <select id="pageSelect" resultType="com.ssm.domain.Staff" parameterType="com.ssm.page.PageBean">
-        SELECT * FROM team02_staff WHERE staff_name LIKE '%${parameter.name}%' limit #{startIndex},#{pageSize}
+        SELECT * FROM team02_staff
+        <include refid="staffselect"/>
+        limit #{startIndex},#{pageSize}
     </select>
 
     <select id="intTotal" resultType="java.lang.Integer" parameterType="com.ssm.domain.Staff">

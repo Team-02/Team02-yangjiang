@@ -4,6 +4,7 @@ import com.ssm.domain.BaseResult;
 import com.ssm.domain.Staff;
 import com.ssm.mapper.StaffMapper;
 import com.ssm.page.PageBean;
+import com.ssm.service.StaffService;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -17,11 +18,13 @@ import java.util.List;
 public class StaffTest {
     private ApplicationContext context;
     private StaffMapper staffMapper;
+    private StaffService staffService;
 
     @Before
     public void init(){
         context = new ClassPathXmlApplicationContext("classpath*:spring-*.xml");
         staffMapper = context.getBean(StaffMapper.class);
+        staffService = context.getBean(StaffService.class);
     }
 
     @Test
@@ -53,6 +56,15 @@ public class StaffTest {
         for (Staff staff : staffList) {
             System.out.println(staff);
         }
+    }
+
+    @Test
+    public void serviceTest(){
+        Staff staff = new Staff();
+        int pageIndex = 0;
+        int pageSize = 2;
+        BaseResult<Staff> baseResult =  staffService.select(staff,pageIndex,pageSize);
+        System.out.println(baseResult);
     }
 
 }

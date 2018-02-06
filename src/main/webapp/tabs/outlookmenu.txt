@@ -1,7 +1,6 @@
 ﻿[
 	{ id: "user", text: "个人中心", iconCls: "icon-add"},
-	{ id: "right", text: "个人工作平台"},
-	{ id: "addRight", pid: "right", text: "任务管理", iconCls: "Note", url: "/home", iconPosition: "top" },
+	{ id: "addRight", pid: "user", text: "个人工作平台", iconCls: "Note", url: "/home", iconPosition: "top" },
 	
 	{ id: "keyan", text: "科研项目管理"},
 	{ id: "ky", pid: "keyan", text: "科研项目申报与评审", url: "/y-tabs"},
