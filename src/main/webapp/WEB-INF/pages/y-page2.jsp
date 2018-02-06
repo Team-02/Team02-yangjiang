@@ -31,6 +31,9 @@
         div{
             background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA,#E0F1FA );
         }
+        html body .user_add .mini-buttonedit-icon {
+            background: url(/scripts/miniui/res/images/user_add.png) no-repeat 50% 50%;
+        }
 
     </style>
 </head>
@@ -121,7 +124,7 @@
         <tr>
             <td class="d">审批(部门经理)<span style="color:red">※</span></td>
             <td>
-                <input allowInput="false" id="btnEdit1" class="mini-buttonedit"
+                <input allowInput="false" id="btnEdit1" class="mini-buttonedit user_add"
                        onbuttonclick="onButtonEdit" name="a" textName="b" style="width: 100%"/>
             </td>
         </tr>
