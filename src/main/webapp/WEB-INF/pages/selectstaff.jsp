@@ -52,8 +52,8 @@
     //动态设置URL
     // grid.setUrl("../data/AjaxService.jsp?method=SearchEmployees");
     //也可以动态设置列 grid.setColumns([]);
-    grid.setUrl("/selectstaff");
-    grid.loadData();
+    grid.setUrl("/select");
+    grid.load();
 
     function GetData() {
         var row = grid.getSelected();

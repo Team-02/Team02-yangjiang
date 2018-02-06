@@ -69,8 +69,13 @@ public class TestController {
         return "y-home";
     }
     @RequestMapping(value = "/selectstaff")
+    public String selectstaff(){
+        return "selectstaff";
+    }
+
+    @RequestMapping(value = "/select")
     @ResponseBody
-    public BaseResult<Staff> selectstaff(Staff staff,int pageIndex,int pageSize){
+    public BaseResult<Staff> select(Staff staff,int pageIndex,int pageSize){
         BaseResult<Staff> baseResult = staffService.select(staff,pageIndex,pageSize);
         return baseResult;
     }

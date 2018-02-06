@@ -114,13 +114,14 @@
         </div>
         <div id="datagrid1" class="mini-datagrid" style="width: 100%;">
             <div property="columns">
+                <div type="checkcolumn"></div>
                 <div field="id" width="120">流程编号</div>
                 <div field="departmentname" width="120">流程名称</div>
                 <div field="department" width="120">所属部门</div>
                 <div field="address" width="120">当前环节</div>
                 <div field="address" width="120">提报人</div>
                 <div field="address" width="120">是否可以打印</div>
-                <a class="mini-button" img="/imgs/vcard_edit.png">办理</a>
+                <div name="ctrl" width="120" headerAlign="center">操作</div>
             </div>
         </div>
     </div>
@@ -130,7 +131,9 @@
     mini.parse();
     /*审批(部门经理)弹出框的点击事件*/
 
-    function getForm() {
+
+
+        function getForm() {
         var form = new mini.Form("#form1");
         var data = form.getData();      //获取表单多个控件的数据
         var json = mini.encode(data);   //序列化成JSON
@@ -183,21 +186,32 @@
         });
 
     }
-    //下边表格table
-    //    mini.parse();
-    //
-    //
-    //    var datagrid=mini.get("datagrid1");
-    //    datagrid.setUrl("/find");
-    //    datagrid.load();
-    //    function onkeyEnter() {
-    //        search();
-    //    }
-    //    function search() {
-    //        var key = $("#key").val();
-    //        datagrid.load({username:key})
-    //    }
+//    下边表格table
 
+
+
+        var datagrid=mini.get("datagrid1");
+        datagrid.setUrl("/find");
+        datagrid.load();
+        function onkeyEnter() {
+            search();
+        }
+        function search() {
+            var key = $("#key").val();
+            datagrid.load({username:key})
+        }
+
+    datagrid.on("drawcell", function (e) {
+        var record = e.record,
+            column = e.column;
+
+    }
+    //ctrl列，超连接操作按钮
+    if (column.name == "ctrl") {
+        e.cellStyle = "text-align:center";
+        e.cellHtml = "<input type='button' value='办理' onclick=''/>";
+
+    }
 </script>
 </body>
 </html>
