@@ -18,7 +18,7 @@
         table, td {
             font-size: small;
             font-family: "Heiti SC";
-            background: linear-gradient(#c0e7ff, #cfe4ff, #86b0eb, #b2caff,#c0e7ff );
+            background: #E0F1FA;
             border: 2px solid white;
             border-collapse: collapse;
             padding: 5px;
@@ -56,6 +56,9 @@
         /*height: 80px;*/
         /*vertical-align: middle;*/
         /*}*/
+        div{
+            background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA,#E0F1FA );
+        }
     </style>
 </head>
 <body>
@@ -68,8 +71,7 @@
     </table>
     <div id="panel1" class="mini-panel" title="查询条件" iconCls="icon-add" style="width:100%;height:100%; background-color: #cbe1fa"
          showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="false"
-         collapseOnTitleClick="true"
-    >
+         collapseOnTitleClick="true">
         <table>
             <tr>
                 <td class="t">申请时间</td>

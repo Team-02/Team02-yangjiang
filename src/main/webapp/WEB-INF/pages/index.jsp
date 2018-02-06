@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-<div id="layout1" class="mini-layout" style="width:100%;height:100%;">
+<div id="layout1" class="mini-layout" style="width:100%;height:100%;background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA,#E0F1FA );">
     <div class="header" region="north" height="70" showSplit="false"
          showHeader="false" style="">
         <h1 style="margin:0;padding:15px;cursor:default"></h1>
