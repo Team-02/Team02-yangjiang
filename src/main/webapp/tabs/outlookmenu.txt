@@ -8,4 +8,8 @@
     { id: "shenpi", pid: "keyan", text: "审批", url: "/approvehome"},
 	{ id: "editUser",  text: "综合管理"},
 	{ id: "addRighte", pid: "editUser", text: "任务管理", iconCls: "Note", url: "/comqueryhome", iconPosition: "top" },
+	{ id: "addRighte", pid: "editUser", text: "卫星库管理人管理", iconCls: "Note", url: "/satemanager", iconPosition: "top" },
+	{ id: "addRighte", pid: "editUser", text: "射线探伤人员管理", iconCls: "Note", url: "/scaldmanager", iconPosition: "top" },
+	{ id: "addRighte", pid: "editUser", text: "厂房管理", iconCls: "Note", url: "/plantmanager", iconPosition: "top" },
+		{ id: "addRighte", pid: "editUser", text: "机组管理", iconCls: "Note", url: "/unitmanager", iconPosition: "top" },
 ]

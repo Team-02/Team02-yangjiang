@@ -105,4 +105,23 @@ public class TestController {
     public String continuepwait(){
         return "continuepwait";
     }
+    @RequestMapping(value = "/satemanager")
+    public String satemanager(){
+        return "satemanager";
+    }
+
+    @RequestMapping(value = "/scaldmanager")
+    public String scaldmanager(){
+        return "scaldmanager";
+    }
+
+    @RequestMapping(value = "/plantmanager")
+    public String plantmanager(){
+        return "plantmanager";
+    }
+
+    @RequestMapping(value = "/unitmanager")
+    public String unitmanager(){
+        return "unitmanager";
+    }
 }
