@@ -96,4 +96,13 @@ public class TestController {
     public String approvehome(){
         return "approvehome";
     }
+
+    @RequestMapping(value = "/continuepalready")
+    public String continuepalready(){
+        return "continuepalready";
+    }
+    @RequestMapping(value = "/continuepwait")
+    public String continuepwait(){
+        return "continuepwait";
+    }
 }

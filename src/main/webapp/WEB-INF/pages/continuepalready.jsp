@@ -11,6 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <link href="/css/demo.css" rel="stylesheet" type="text/css">
+
     <script src="/scripts/boot.js" type="text/javascript"></script>
     <script src="/js/ajaxfileupload.js" type="text/javascript"></script>
     <script src="/js/jquery.cookie.js" type="text/javascript"></script>
@@ -35,30 +36,30 @@
             height: 100%;
         }
         /*#toolBar{*/
-            /*position: absolute;*/
+        /*position: absolute;*/
         /*}*/
         /*#button1{*/
-            /*margin-left: 600px;*/
+        /*margin-left: 600px;*/
         /*}*/
 
         .t {
             text-align: right;
             width: 100px;
         }
-
         html body .user_add .mini-buttonedit-icon {
             background: url(/scripts/miniui/res/images/user_add.png) no-repeat 50% 50%;
         }
         html body .group_add .mini-buttonedit-icon {
             background: url(/scripts/miniui/res/images/group_add.png) no-repeat 50% 50%;
         }
+        div{
+            background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA,#E0F1FA );
+        }
+
         /*.high{*/
         /*height: 80px;*/
         /*vertical-align: middle;*/
         /*}*/
-        div{
-            background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA,#E0F1FA );
-        }
     </style>
 </head>
 <body>
@@ -69,15 +70,18 @@
             <td colspan="4">当前位置:个人工作台 >> 待办任务</td>
         </tr>
     </table>
-    <div id="panel1" class="mini-panel" title="查询条件" iconCls="icon-add" style="width:100%;height:100%; background-color: #cbe1fa"
+    <div id="panel1" class="mini-panel" title="查询条件" iconCls="icon-add" style="width:100%;height:100%; background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA,#E0F1FA );"
          showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="false"
          collapseOnTitleClick="true">
         <table>
             <tr>
                 <td class="t">申请时间</td>
                 <td><input class="mini-datepicker" name="birthday" style="width: 400px"/></td>
-                <td class="t">关键字</td>
-                <td><input type="text" id="pointName"></td>
+                <td class="t">流程名称</td>
+                <td>
+                    <input class="mini-combobox" style="width:400px;" textField="text" valueField="id"
+                           url="/tabs/flowtype.txt" value="" showNullItem="true" allowInput="false"/>
+                </td>
             </tr>
             <tr>
                 <td class="t">申请人</td>
@@ -85,6 +89,10 @@
                     <input value="" allowInput="false" id="btnEdit1" class="mini-buttonedit user_add"
                            onbuttonclick="onButtonEdit1" name="a" textName="b" style="width: 400px"/>
                 </td>
+                <td class="t">关键字</td>
+                <td><input type="text" id="pointName"></td>
+            </tr>
+            <tr>
                 <td class="t">所属部门</td>
                 <td>
                     <input value="" allowInput="false" id="btnEdit2" class="mini-buttonedit group_add"
@@ -109,11 +117,11 @@
                 <div type="checkcolumn"></div>
                 <div field="id" width="120">流程编号</div>
                 <div field="departmentname" width="120">流程名称</div>
-                <div field="department" width="120">所属部门</div>
+                <div field="department" width="120">申请部门</div>
                 <div field="address" width="120">当前环节</div>
                 <div field="address" width="120">提报人</div>
                 <div field="address" width="120">提报时间</div>
-                <div name="ctrl" width="120" headerAlign="center">办理</div>
+                <div name="ctrl" width="120" headerAlign="center">操作</div>
             </div>
         </div>
     </div>
@@ -177,30 +185,20 @@
 
     }
     //下边表格table
-    mini.parse();
+    //    mini.parse();
+    //
+    //
+    //    var datagrid=mini.get("datagrid1");
+    //    datagrid.setUrl("/find");
+    //    datagrid.load();
+    //    function onkeyEnter() {
+    //        search();
+    //    }
+    //    function search() {
+    //        var key = $("#key").val();
+    //        datagrid.load({username:key})
+    //    }
 
-
-    var datagrid=mini.get("datagrid1");
-    datagrid.setUrl("/find");
-    datagrid.load();
-    function onkeyEnter() {
-        search();
-    }
-    function search() {
-        var key = $("#key").val();
-        datagrid.load({username:key})
-    }
-    datagrid.on("drawcell", function (e) {
-        var record = e.record,
-            column = e.column;
-
-    }
-    //ctrl列，超连接操作按钮
-    if (column.name == "ctrl") {
-        e.cellStyle = "text-align:center";
-        e.cellHtml = "<input type='button' value='办理' onclick=''/>";
-
-    }
 </script>
 </body>
 </html>
