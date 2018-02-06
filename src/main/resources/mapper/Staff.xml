@@ -21,8 +21,15 @@
         <include refid="staffColumns"/>)
         VALUES (#{id},#{name},#{password},#{loginName},#{email})
     </insert>
-    <select id="selectStaffTotal" resultType="java.lang.Integer">
+    <select id="selectAll" resultMap="staffMap">
         SELECT * FROM team02_staff
     </select>
+    <select id="pageSelect" resultType="com.ssm.domain.Staff" parameterType="com.ssm.page.PageBean">
+        SELECT *
+         FROM team02_staff WHERE staff_name LIKE '%${parameter.staff_name}%' limit #{startIndex},#{pageSize}
+    </select>
 
+    <select id="intTotal" resultType="java.lang.Integer" parameterType="com.ssm.domain.Staff">
+        SELECT COUNT(staff_Id) FROM team02_staff WHERE staff_name LIKE '%${staff_name}%'
+    </select>
 </mapper>

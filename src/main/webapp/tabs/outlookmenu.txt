@@ -1,13 +1,12 @@
 ﻿[
 	{ id: "user", text: "个人中心", iconCls: "icon-add"},
-	{ id: "editUser",  text: "综合管理"},
-	{ id: "addRighte", pid: "editUser", text: "任务管理", iconCls: "Note", url: "/comqueryhome", iconPosition: "top" },
 	{ id: "right", text: "个人工作平台"},
 	{ id: "addRight", pid: "right", text: "任务管理", iconCls: "Note", url: "/home", iconPosition: "top" },
 	
 	{ id: "keyan", text: "科研项目管理"},
 	{ id: "ky", pid: "keyan", text: "科研项目申报与评审", url: "/y-tabs"},
-
-
-
+	{ id: "kychengjie", pid: "keyan", text: "承接外部科技项目申报", url: "/continuehome"},
+    { id: "shenpi", pid: "keyan", text: "审批", url: "/approvehome"},
+	{ id: "editUser",  text: "综合管理"},
+	{ id: "addRighte", pid: "editUser", text: "任务管理", iconCls: "Note", url: "/comqueryhome", iconPosition: "top" },
 ]

@@ -132,7 +132,7 @@
     function onButtonEdit1(e) {
         var btnEdit = this;
         mini.open({
-            url: "selectstudent.jsp",
+            url: "selectstaff",
             title: "选择学生",
             width: 650,
             height: 380,

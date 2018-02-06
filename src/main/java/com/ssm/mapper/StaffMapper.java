@@ -1,6 +1,7 @@
 package com.ssm.mapper;
 
 import com.ssm.domain.Staff;
+import com.ssm.page.PageBean;
 
 import java.util.List;
 
@@ -10,4 +11,7 @@ import java.util.List;
 public interface StaffMapper {
 
     Integer insertStaff(Staff staff);
+    List<Staff> selectAll();
+    List<Staff> pageSelect(PageBean<Staff> pageBean);
+    Integer intTotal(Staff staff);
 }

@@ -1,8 +1,13 @@
 package com.ssm.controller;
 
+import com.ssm.domain.BaseResult;
+import com.ssm.domain.Staff;
+import com.ssm.service.StaffService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
 
 /**
  * Created by dllo on 18/2/4.
@@ -10,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class TestController {
 
+    @Resource
+    private StaffService staffService;
     @RequestMapping(value = {"","/"})
     public String index(){
         return "index";
@@ -49,7 +56,6 @@ public class TestController {
     }
 
     @RequestMapping(value = "/y-page1")
-    @ResponseBody
     public String page1(){
         return "y-page1";
     }
@@ -57,6 +63,32 @@ public class TestController {
     public String page2(){
         return "y-page2";
     }
-    
-    
+
+    @RequestMapping(value = "/y-home")
+    public String yhome(){
+        return "y-home";
+    }
+    @RequestMapping(value = "/selectstaff")
+    @ResponseBody
+    public BaseResult<Staff> selectstaff(Staff staff,int pageIndex,int pageSize){
+        BaseResult<Staff> baseResult = staffService.select(staff,pageIndex,pageSize);
+        return baseResult;
+    }
+    @RequestMapping(value = "/continueproject")
+    public String continueproject(){
+        return "continueproject";
+    }
+    @RequestMapping(value = "/continuehome")
+    public String continuephome(){
+
+        return "continuehome";
+    }
+    @RequestMapping(value = "/approve")
+    public String approve(){
+        return "approve";
+    }
+    @RequestMapping(value = "/approvehome")
+    public String approvehome(){
+        return "approvehome";
+    }
 }

@@ -127,7 +127,7 @@
 
         var btnEdit = this;
         mini.open({
-            url:"../../html/SelectGridWindow.html",
+            url:"selectstaff",
             title: "选择部门经理",
             width: 650,
             height: 380,

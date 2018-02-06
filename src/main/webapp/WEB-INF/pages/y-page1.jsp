@@ -150,8 +150,8 @@
 
         var btnEdit = this;
         mini.open({
-            url:"../../html/SelectGridWindow.html",
-            title: "选择部门经理",
+            url:"selectstaff",
+            title: "项目申报单位",
             width: 650,
             height: 380,
             ondestroy: function (action) {
@@ -161,8 +161,8 @@
                     var data = iframe.contentWindow.GetData();
                     data = mini.clone(data);    //必须克隆
                     if (data) {
-                        btnEdit.setValue(data.id);
-                        btnEdit.setText(data.name);
+                        btnEdit.setValue(data.staff_Id);
+                        btnEdit.setText(data.staff_name);
                     }
                 }
 
@@ -174,7 +174,7 @@
 
         var btnEdit = this;
         mini.open({
-            url:"../../html/SelectGridWindow.html",
+            url:"selectstaff",
             title: "选择部门经理",
             width: 650,
             height: 380,
