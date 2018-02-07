@@ -136,7 +136,7 @@
         var btnEdit = this;
         mini.open({
             url: "selectstaff",
-            title: "选择学生",
+            title: "申请人",
             width: 650,
             height: 380,
             ondestroy: function (action) {
@@ -146,8 +146,8 @@
                     var data = iframe.contentWindow.GetData();
                     data = mini.clone(data);    //必须克隆
                     if (data) {
-                        btnEdit.setValue(data.sid);
-                        btnEdit.setText(data.sname);
+                        btnEdit.setValue(data.id);
+                        btnEdit.setText(data.name);
                     }
                 }
             }

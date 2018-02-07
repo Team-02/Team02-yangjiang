@@ -60,11 +60,11 @@ public class StaffTest {
 
     @Test
     public void serviceTest(){
-        Staff staff = new Staff();
-        int pageIndex = 0;
-        int pageSize = 2;
-        BaseResult<Staff> baseResult =  staffService.select(staff,pageIndex,pageSize);
-        System.out.println(baseResult);
+//        Staff staff = new Staff();
+//        int pageIndex = 0;
+//        int pageSize = 2;
+//        BaseResult<Staff> baseResult =  staffService.select(staff,pageIndex,pageSize);
+//        System.out.println(baseResult);
     }
 
 }

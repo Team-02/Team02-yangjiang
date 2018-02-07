@@ -35,7 +35,7 @@
     </div>
     <div title="center" region="center" bodyStyle="overflow:hidden;">
         <div class="mini-splitter" style="width:100%;height:100%;">
-            <div size="10%" showCollapseButton="true" showHeader="false"
+            <div size="15%" showCollapseButton="true" showHeader="false"
                  region="west" width="180" maxWidth="250"
                  minWidth="100"
                  style="border:0;">

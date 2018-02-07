@@ -1,13 +1,11 @@
 package com.ssm.page;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
  * Created by dllo on 2017/8/6.
  */
 public class PageBean<T> {
-    private T parameter; //用于条件查询的对象
 
     // 必选项
     private int pageNum;            //当前页 -- 浏览器传递
@@ -22,6 +20,8 @@ public class PageBean<T> {
     private int begin;                //循环开始
     private int end;                //循环结束
 
+    private String name;//条件语句中的关键字
+
 //    private String url;  // 它就是url后的条件！
 
 
@@ -35,14 +35,17 @@ public class PageBean<T> {
         if (this.pageNum < 1) {
             this.pageNum = 1;
         }
+
         //1 计算项
-        // 1.1 总分页数
+        // 1.2 总分页数
         this.totalPage = (this.totalRecord + this.pageSize - 1) / this.pageSize;
-        // 优化 -- 排除页码超出范围
-        if (this.pageNum > this.totalPage) {
-            this.pageNum = this.totalPage;
+
+        //优化 -- 排除页码超出范围
+        if (this.pageNum > totalPage) {
+            this.pageNum = totalPage;
         }
-        // 1.2  开始索引
+
+        // 1.1  开始索引
         this.startIndex = (this.pageNum - 1) * this.pageSize;
 
         //2 动态条 最多显示10分页，前5后4
@@ -83,6 +86,7 @@ public class PageBean<T> {
     public int getTotalPage() {
         return totalPage;
     }
+
 
     public List<T> getBeanList() {
         return beanList;
@@ -136,6 +140,7 @@ public class PageBean<T> {
         this.startIndex = startIndex;
     }
 
+
     public int getEnd() {
         return end;
     }
@@ -144,11 +149,12 @@ public class PageBean<T> {
         this.end = end;
     }
 
-    public T getParameter() {
-        return parameter;
+
+    public String getName() {
+        return name;
     }
 
-    public void setParameter(T parameter) {
-        this.parameter = parameter;
+    public void setName(String name) {
+        this.name = name;
     }
 }

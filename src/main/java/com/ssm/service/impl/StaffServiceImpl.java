@@ -23,11 +23,11 @@ public class StaffServiceImpl implements StaffService {
         return staffMapper.selectAll();
     }
 
-    public BaseResult<Staff> select(Staff staff, int pageIndex, int pageSize) {
+    public BaseResult<Staff> select(String name, int pageIndex, int pageSize) {
         BaseResult<Staff> baseResult = new BaseResult<Staff>();
-        int total = staffMapper.intTotal(staff);
+        int total = staffMapper.intTotal(name);
         PageBean<Staff> pageBean = new PageBean<Staff>(pageIndex+1, pageSize, total);
-        pageBean.setParameter(staff);
+        pageBean.setName(name);
         List<Staff> staffList = staffMapper.pageSelect(pageBean);
         baseResult.setTotal(total);
         baseResult.setData(staffList);
