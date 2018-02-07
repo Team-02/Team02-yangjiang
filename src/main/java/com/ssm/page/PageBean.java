@@ -20,6 +20,7 @@ public class PageBean<T> {
     private int begin;                //循环开始
     private int end;                //循环结束
 
+    private String deptName;
     private String name;//条件语句中的关键字
 
 //    private String url;  // 它就是url后的条件！
@@ -156,5 +157,13 @@ public class PageBean<T> {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDeptName() {
+        return deptName;
+    }
+
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
     }
 }

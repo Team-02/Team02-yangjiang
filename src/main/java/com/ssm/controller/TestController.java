@@ -1,7 +1,9 @@
 package com.ssm.controller;
 
 import com.ssm.domain.BaseResult;
+import com.ssm.domain.Department;
 import com.ssm.domain.Staff;
+import com.ssm.service.DepartmentService;
 import com.ssm.service.StaffService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,8 @@ public class TestController {
 
     @Resource
     private StaffService staffService;
+    @Resource
+    private DepartmentService departmentService;
     @RequestMapping(value = {"","/"})
     public String index(){
         return "index";
@@ -123,5 +127,17 @@ public class TestController {
     @RequestMapping(value = "/unitmanager")
     public String unitmanager(){
         return "unitmanager";
+    }
+
+    @RequestMapping(value = "/selectdepartment")
+    public String selectdepartment(){
+        return "selectdepartment";
+    }
+
+    @RequestMapping(value = "/selectdepart")
+    @ResponseBody
+    public BaseResult<Department> selectdepart(String deptName, int pageIndex, int pageSize){
+        BaseResult<Department> baseResult = departmentService.select(deptName,pageIndex,pageSize);
+        return baseResult;
     }
 }

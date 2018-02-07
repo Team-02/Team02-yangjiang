@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.mapper.DepartmentMapper">
+    <resultMap id="departmentMap" type="com.ssm.domain.Department">
+        <id property="deptId" column="dept_Id"/>
+        <result property="deptName" column="dept_Name"/>
+    </resultMap>
+    <sql id="departmentColumns">
+        dept_Id,dept_Name
+    </sql>
+    <sql id="selectDepartment">
+        <where>
+            1 = 1
+            <if test="deptName !=null and deptName != ''">
+                AND dept_Name LIKE '%${deptName}%'
+            </if>
+        </where>
+    </sql>
+    <select id="pageSelect" resultMap="departmentMap" parameterType="com.ssm.page.PageBean">
+        SELECT
+        <include refid="departmentColumns"/>
+        FROM team02_department
+        <include refid="selectDepartment"/>
+        limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="intTotal" resultType="java.lang.Integer">
+        SELECT COUNT(dept_Id) FROM team02_department
+        <if test="value != null and value !=''">
+            WHERE dept_Name LIKE '%${value}%'
+        </if>
+
+    </select>
+</mapper>

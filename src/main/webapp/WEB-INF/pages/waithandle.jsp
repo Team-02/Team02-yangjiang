@@ -19,7 +19,6 @@
             font-size: small;
             font-family: "Heiti SC";
             background: #E0F1FA;
-            border: 2px solid white;
             border-collapse: collapse;
             padding: 5px;
             width: 100%;
@@ -88,7 +87,7 @@
                 <td class="t">所属部门</td>
                 <td>
                     <input value="" allowInput="false" id="btnEdit2" class="mini-buttonedit group_add"
-                           onbuttonclick="onButtonEdit1" name="id" textName="name" style="width: 400px"/>
+                           onbuttonclick="onButtonEdit2" name="id" textName="name" style="width: 400px"/>
                 </td>
             </tr>
         </table>
@@ -99,7 +98,7 @@
                 <tr>
                     <td colspan="4" class="content" style="text-align: right">
 
-                        <button class="btn1" type="button" name="search"><img src="/imgs/query.png" style="width: 16px;height: 16px">查询</button>
+                        <button class="btn1" type="button" name="search" onclick="onClick()"><img src="/imgs/query.png" style="width: 16px;height: 16px">查询</button>
                     </td>
                 </tr>
             </table>
@@ -131,6 +130,29 @@
     }
 
 
+    function onClick() {
+//        /*1.获得基本信息tab表单中的数据 cookies取*/
+//        var baseData = $.cookie("form1");
+
+        /*2.获得当前其他信息tab表单中的数据*/
+        var otherData = getForm();
+        console.log(baseData+"--"+otherData);
+        alert("提交成功");
+        /*3.将数据传递个后台*/
+//        $("#base").val(baseData);
+        $("#other").val(otherData);
+        /*通过ajax上传文件 数据*/
+        $.ajaxFileUpload({
+            url:"select",
+//            fileElementId:$("#upload"),/*文件上传的id域*/
+            success:function (data) {
+
+                console.log(data);
+
+            }
+
+        })
+    }
     function onButtonEdit1(e) {
         var btnEdit = this;
         mini.open({
@@ -156,8 +178,8 @@
 
         var btnEdit = this;
         mini.open({
-            url: "selectstudent.jsp",
-            title: "选择部门经理",
+            url: "selectdepartment",
+            title: "所属部门",
             width: 650,
             height: 380,
             ondestroy: function (action) {
@@ -167,8 +189,8 @@
                     var data = iframe.contentWindow.GetData();
                     data = mini.clone(data);    //必须克隆
                     if (data) {
-                        btnEdit.setValue(data.sid);
-                        btnEdit.setText(data.sname);
+                        btnEdit.setValue(data.deptId);
+                        btnEdit.setText(data.deptName);
                     }
                 }
 
