@@ -11,6 +11,6 @@ import java.util.List;
 public interface StaffService {
 
     List<Staff> selectAll();
-    BaseResult<Staff> select(Staff staff, int pageIndex, int pageSize);
+    BaseResult<Staff> select(String name, int pageIndex, int pageSize);
 
 }

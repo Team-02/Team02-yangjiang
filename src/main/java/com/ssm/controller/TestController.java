@@ -75,8 +75,8 @@ public class TestController {
 
     @RequestMapping(value = "/select")
     @ResponseBody
-    public BaseResult<Staff> select(Staff staff,int pageIndex,int pageSize){
-        BaseResult<Staff> baseResult = staffService.select(staff,pageIndex,pageSize);
+    public BaseResult<Staff> select(String name,int pageIndex,int pageSize){
+        BaseResult<Staff> baseResult = staffService.select(name,pageIndex,pageSize);
         return baseResult;
     }
     @RequestMapping(value = "/continueproject")

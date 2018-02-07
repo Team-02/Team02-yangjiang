@@ -88,7 +88,7 @@
                 <td class="t">所属部门</td>
                 <td>
                     <input value="" allowInput="false" id="btnEdit2" class="mini-buttonedit group_add"
-                           onbuttonclick="onButtonEdit1" name="a" textName="b" style="width: 400px"/>
+                           onbuttonclick="onButtonEdit1" name="id" textName="name" style="width: 400px"/>
                 </td>
             </tr>
         </table>
@@ -135,7 +135,7 @@
         var btnEdit = this;
         mini.open({
             url: "selectstaff",
-            title: "选择学生",
+            title: "申请人",
             width: 650,
             height: 380,
             ondestroy: function (action) {
@@ -145,8 +145,8 @@
                     var data = iframe.contentWindow.GetData();
                     data = mini.clone(data);    //必须克隆
                     if (data) {
-                        btnEdit.setValue(data.sid);
-                        btnEdit.setText(data.sname);
+                        btnEdit.setValue(data.id);
+                        btnEdit.setText(data.name);
                     }
                 }
             }
@@ -179,27 +179,15 @@
     //下边表格table
     mini.parse();
 
-
-    var datagrid=mini.get("datagrid1");
-    datagrid.setUrl("/find");
-    datagrid.load();
-    function onkeyEnter() {
-        search();
-    }
-    function search() {
-        var key = $("#key").val();
-        datagrid.load({username:key})
-    }
     datagrid.on("drawcell", function (e) {
         var record = e.record,
             column = e.column;
 
-    }
+    })
     //ctrl列，超连接操作按钮
     if (column.name == "ctrl") {
         e.cellStyle = "text-align:center";
         e.cellHtml = "<input type='button' value='办理' onclick=''/>";
-
     }
 </script>
 </body>

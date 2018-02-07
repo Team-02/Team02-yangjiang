@@ -23,15 +23,16 @@
 </div>
 <div class="mini-fit">
 
-    <div id="grid1" class="mini-datagrid" style="width:100%;height:100%;"
-         idField="id" allowResize="true"
+    <div id="datagrid1" class="mini-datagrid" style="width:100%;height:100%;"
+        url="/select" idField="id" allowResize="true"
          borderStyle="border-left:0;border-right:0;" onrowdblclick="onRowDblClick"
     >
         <div property="columns">
             <div type="indexcolumn" ></div>
-            <div field="staff_Id" width="120" headerAlign="center" allowSort="true">员工编号</div>
-            <div field="staff_name" width="100%" headerAlign="center" allowSort="true">员工姓名</div>
-            <div field="staff_Pwd" width="100" headerAlign="center" allowSort="true">员工密码</div>
+            <div field="id" width="120" headerAlign="center" allowSort="true">员工编号</div>
+            <div field="name" width="100%" headerAlign="center" allowSort="true">员工姓名</div>
+            <div field="password" width="100" headerAlign="center" allowSort="true">员工密码</div>
+            <div field="email" width="100" headerAlign="center" allowSort="true">员工邮箱</div>
         </div>
     </div>
 
@@ -47,21 +48,21 @@
 <script type="text/javascript">
     mini.parse();
 
-    var grid = mini.get("grid1");
-
+    var grid = mini.get("datagrid1");
+    grid.load();
     //动态设置URL
     // grid.setUrl("../data/AjaxService.jsp?method=SearchEmployees");
     //也可以动态设置列 grid.setColumns([]);
-    grid.setUrl("/select");
-    grid.load();
 
+    //得到元素值,传给前端,值得回调
     function GetData() {
         var row = grid.getSelected();
         return row;
     }
+
     function search() {
         var key = mini.get("key").getValue();
-        grid.load({ key: key });
+        grid.load({ name: key });
     }
     function onKeyEnter(e) {
         search();

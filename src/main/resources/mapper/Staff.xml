@@ -15,13 +15,13 @@
     <sql id="staffColumns">
         staff_Id,staff_name,staff_Pwd,staff_loginName,staff_email
     </sql>
-    <sql id="staffselect">
-        <where>
-            1 = 1
-            <if test="beanList !=null and beanList != ''">
-                AND staff_name LIKE '%${name}%'
-            </if>
-        </where>
+    <sql id="selectStaff">
+            <where>
+                1 = 1
+                <if test="name !=null and name != ''">
+                    AND staff_name LIKE '%${name}%'
+                </if>
+            </where>
     </sql>
     <insert id="insertStaff" parameterType="com.ssm.domain.Staff">
         INSERT INTO team02_staff (
@@ -31,13 +31,19 @@
     <select id="selectAll" resultMap="staffMap">
         SELECT * FROM team02_staff
     </select>
-    <select id="pageSelect" resultType="com.ssm.domain.Staff" parameterType="com.ssm.page.PageBean">
-        SELECT * FROM team02_staff
-        <include refid="staffselect"/>
+    <select id="pageSelect" resultMap="staffMap" parameterType="com.ssm.page.PageBean">
+        SELECT
+        <include refid="staffColumns"/>
+        FROM team02_staff
+        <include refid="selectStaff"/>
         limit #{startIndex},#{pageSize}
     </select>
 
-    <select id="intTotal" resultType="java.lang.Integer" parameterType="com.ssm.domain.Staff">
-        SELECT COUNT(staff_Id) FROM team02_staff WHERE staff_name LIKE '%${name}%'
+    <select id="intTotal" resultType="java.lang.Integer">
+        SELECT COUNT(staff_Id) FROM team02_staff
+        <if test="value != null and value !=''">
+            WHERE staff_name LIKE '%${value}%'
+        </if>
+
     </select>
 </mapper>
