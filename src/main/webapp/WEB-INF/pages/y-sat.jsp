@@ -2,13 +2,13 @@
   Created by IntelliJ IDEA.
   User: YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
   Date: 18/2/6哈哈
-  Time: 17:51哈哈
+  Time: 18:11哈哈
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>评审小组组长填写评审意见</title>
+    <title>科技办经理审批</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link href="../../css/demo.css" rel="stylesheet" type="text/css"/>
     <link href="../../scripts/miniui/themes/blue/skin.css" rel="stylesheet" type="text/css"/>
@@ -111,18 +111,33 @@
     <table border="0" cellpadding="1" cellspacing="2">
         <tr>
             <td class="d">对阳江公司科技发展规划的符合性审定</td>
-            <td colspan="3"><input type="text" required="true" style="width:100%;height:60px;"/></td>
+            <td colspan="3"><input type="text" required="true" readonly="readonly" style="width:100%;height:60px;"/></td>
         </tr>
         <tr>
             <td class="d">对项目成果的应用领域和价值</td>
-            <td colspan="3"><input type="text" required="true" style="width:100%;height:60px;"/></td>
+            <td colspan="3"><input type="text" required="true" readonly="readonly" style="width:100%;height:60px;"/></td>
         </tr>
         <tr>
             <td class="d">总体评价</td>
-            <td colspan="3"><input type="text" required="true" style="width:100%;height:60px;"/></td>
+            <td colspan="3"><input type="text" required="true" readonly="readonly" style="width:100%;height:60px;"/></td>
         </tr>
-        </table>
+    </table>
 </div>
+<div id="panel5" class="mini-panel" title="技术可行性分析意见" iconCls="icon-add" style="width:100%;height:auto;"
+     showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="false"
+     collapseOnTitleClick="true">
+    <table border="0" cellpadding="1" cellspacing="2">
+        <tr>
+            <td class="d">要求</td>
+            <td colspan="3"><input type="text" required="true"  style="width:100%;height:60px;"/></td>
+        </tr>
+        <tr>
+            <td class="d">建议</td>
+            <td colspan="3"><input type="text" required="true"  style="width:100%;height:60px;"/></td>
+        </tr>
+    </table>
+</div>
+
 <table border="0" cellpadding="1" cellspacing="2">
     <tr>
 
