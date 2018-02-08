@@ -11,9 +11,10 @@
         <result property="currentLink" column="current_link"/>
         <result property="applicantPerson" column="applicant_person"/>
         <result property="applyTime" column="apply_time"/>
+        <result property="print" column="print"/>
     </resultMap>
     <sql id="processColumns">
-        id,process_number,process_name,dept_name,current_link,applicant_person,apply_time
+        id,process_number,process_name,dept_name,current_link,applicant_person,apply_time,print
     </sql>
     <sql id="selectProcess">
         <where>
