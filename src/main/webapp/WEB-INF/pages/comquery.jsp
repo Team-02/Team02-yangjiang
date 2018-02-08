@@ -115,7 +115,7 @@
                 <tr>
                     <td colspan="4" class="content" style="text-align: right">
 
-                        <button class="btn1" type="button" name="search"><img src="/imgs/query.png" style="width: 16px;height: 16px">查询</button>
+                        <button class="btn1" type="button" name="search" onclick="search()"><img src="/imgs/query.png" style="width: 16px;height: 16px">查询</button>
                     </td>
                 </tr>
             </table>
@@ -123,13 +123,14 @@
         <div id="datagrid1" class="mini-datagrid" style="width: 100%;">
             <div property="columns">
                 <div type="checkcolumn"></div>
-                <div field="id" width="120">流程编号</div>
-                <div field="departmentname" width="120">流程名称</div>
-                <div field="department" width="120">所属部门</div>
-                <div field="address" width="120">当前环节</div>
-                <div field="address" width="120">提报人</div>
-                <div field="address" width="120">是否可以打印</div>
-                <div name="ctrl" width="120" headerAlign="center">操作</div>
+                <div field="processNumber" width="120">流程编号</div>
+                <div field="processName" width="120">流程名称</div>
+                <div field="deptName" width="120">所属部门</div>
+                <div field="currentLink" width="120">当前环节</div>
+                <div field="applicantPerson" width="120">提报人</div>
+                <div field="applyTime" width="120">提报时间</div>
+                <div field="print" width="120">是否可以打印</div>
+                <div name="ctrl" width="120" headerAlign="center">办理</div>
             </div>
         </div>
     </div>
@@ -139,9 +140,23 @@
     mini.parse();
     /*审批(部门经理)弹出框的点击事件*/
 
+    var grid = mini.get("datagrid1");
+    grid.load();
+    //动态设置URL
+    // grid.setUrl("../data/AjaxService.jsp?method=SearchEmployees");
+    //也可以动态设置列 grid.setColumns([]);
 
+    //得到元素值,传给前端,值得回调
+    function GetData() {
+        var row = grid.getSelected();
+        return row;
+    }
 
-        function getForm() {
+    function search() {
+        var key = mini.get("key").getValue();
+        grid.load({processNumber: key});
+    }
+    function getForm() {
         var form = new mini.Form("#form1");
         var data = form.getData();      //获取表单多个控件的数据
         var json = mini.encode(data);   //序列化成JSON
@@ -149,11 +164,34 @@
     }
 
 
+    function onClick() {
+//        /*1.获得基本信息tab表单中的数据 cookies取*/
+//        var baseData = $.cookie("form1");
+
+        /*2.获得当前其他信息tab表单中的数据*/
+        var otherData = getForm();
+        console.log(baseData + "--" + otherData);
+        alert("提交成功");
+        /*3.将数据传递个后台*/
+//        $("#base").val(baseData);
+        $("#other").val(otherData);
+        /*通过ajax上传文件 数据*/
+        $.ajaxFileUpload({
+            url: "select",
+//            fileElementId:$("#upload"),/*文件上传的id域*/
+            success: function (data) {
+
+                console.log(data);
+
+            }
+
+        })
+    }
     function onButtonEdit1(e) {
         var btnEdit = this;
         mini.open({
-            url: "selectstudent.jsp",
-            title: "选择学生",
+            url: "selectstaff",
+            title: "申请人",
             width: 650,
             height: 380,
             ondestroy: function (action) {
@@ -163,8 +201,8 @@
                     var data = iframe.contentWindow.GetData();
                     data = mini.clone(data);    //必须克隆
                     if (data) {
-                        btnEdit.setValue(data.sid);
-                        btnEdit.setText(data.sname);
+                        btnEdit.setValue(data.id);
+                        btnEdit.setText(data.name);
                     }
                 }
             }
@@ -174,8 +212,8 @@
 
         var btnEdit = this;
         mini.open({
-            url: "selectstudent.jsp",
-            title: "选择部门经理",
+            url: "selectdepartment",
+            title: "所属部门",
             width: 650,
             height: 380,
             ondestroy: function (action) {
@@ -185,8 +223,8 @@
                     var data = iframe.contentWindow.GetData();
                     data = mini.clone(data);    //必须克隆
                     if (data) {
-                        btnEdit.setValue(data.sid);
-                        btnEdit.setText(data.sname);
+                        btnEdit.setValue(data.deptId);
+                        btnEdit.setText(data.deptName);
                     }
                 }
 
@@ -194,31 +232,16 @@
         });
 
     }
-//    下边表格table
-
-
-
-        var datagrid=mini.get("datagrid1");
-        datagrid.setUrl("/find");
-        datagrid.load();
-        function onkeyEnter() {
-            search();
-        }
-        function search() {
-            var key = $("#key").val();
-            datagrid.load({username:key})
-        }
 
     datagrid.on("drawcell", function (e) {
         var record = e.record,
             column = e.column;
 
-    }
+    })
     //ctrl列，超连接操作按钮
     if (column.name == "ctrl") {
         e.cellStyle = "text-align:center";
         e.cellHtml = "<input type='button' value='办理' onclick=''/>";
-
     }
 </script>
 </body>

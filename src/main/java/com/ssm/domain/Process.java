@@ -11,14 +11,9 @@ public class Process implements Serializable{
     private int id;
     private String processNumber,processName,deptName,currentLink,applicantPerson;
     private Date applyTime;
+    private String print;
 
-    public Process(String processNumber, String processName, String deptName, String currentLink, String applicantPerson, Date applyTime) {
-        this.processNumber = processNumber;
-        this.processName = processName;
-        this.deptName = deptName;
-        this.currentLink = currentLink;
-        this.applicantPerson = applicantPerson;
-        this.applyTime = applyTime;
+    public Process() {
     }
 
     @Override
@@ -31,6 +26,7 @@ public class Process implements Serializable{
                 ", currentLink='" + currentLink + '\'' +
                 ", applicantPerson='" + applicantPerson + '\'' +
                 ", applyTime=" + applyTime +
+                ", print='" + print + '\'' +
                 '}';
     }
 
@@ -90,6 +86,21 @@ public class Process implements Serializable{
         this.applyTime = applyTime;
     }
 
-    public Process() {
+    public String getPrint() {
+        return print;
+    }
+
+    public void setPrint(String print) {
+        this.print = print;
+    }
+
+    public Process(String processNumber, String processName, String deptName, String currentLink, String applicantPerson, Date applyTime, String print) {
+        this.processNumber = processNumber;
+        this.processName = processName;
+        this.deptName = deptName;
+        this.currentLink = currentLink;
+        this.applicantPerson = applicantPerson;
+        this.applyTime = applyTime;
+        this.print = print;
     }
 }
