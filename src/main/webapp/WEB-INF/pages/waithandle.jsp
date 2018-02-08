@@ -24,9 +24,12 @@
             width: 100%;
 
         }
-
         td {
             width: auto;
+            border:1px solid white;
+        }
+        tr{
+            border:1px solid white;
         }
 
         input {
@@ -81,9 +84,7 @@
                 <td><input class="mini-datepicker" name="birthday" style="width: 400px"/></td>
                 <td class="t">关键字</td>
                 <td>
-                    <div class="mini-toolbar" style="text-align:center;line-height:30px;" borderStyle="border:0;">
-                        <input id="key" class="mini-textbox" style="width:150px;" onenter="onKeyEnter"/>
-                    </div>
+                        <input  id="key" class="mini-textbox" style="width:400px;" onenter="onKeyEnter"/>
                 </td>
             </tr>
             <tr>
@@ -101,14 +102,11 @@
         </table>
     </div>
     <div>
-        <div id="toolBar" class="mini-toolbar" style="width: 100%;border-bottom: 0px">
+        <div  style="width: 100%;border-bottom: 0px">
             <table>
                 <tr>
                     <td colspan="4" class="content" style="text-align: right">
-                        <div class="mini-toolbar" style="text-align:center;line-height:30px;" borderStyle="border:0;">
-                            <a class="mini-button" style="width:60px;" onclick="search()"><img src="/imgs/query.png"
-                                                                                               style="width: 16px;height: 16px">查询</a>
-                        </div>
+                            <a class="mini-button" style="width:60px;" onclick="search()"><img src="/imgs/query.png" style="width: 16px;height: 16px">查询</a>
                     </td>
                 </tr>
             </table>
