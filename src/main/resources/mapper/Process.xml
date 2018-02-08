@@ -19,7 +19,9 @@
         <where>
             1 = 1
             <if test="processNumber !=null and processNumber != ''">
+
                 AND process_number LIKE '%${processNumber}%'
+
             </if>
         </where>
     </sql>
@@ -36,6 +38,10 @@
         <if test="value != null and value !=''">
             WHERE process_number LIKE '%${value}%'
         </if>
-
+    </select>
+    <select id="selectAll" resultMap="processMap">
+        SELECT
+        <include refid="processColumns"/>
+        FROM team02_process
     </select>
 </mapper>
