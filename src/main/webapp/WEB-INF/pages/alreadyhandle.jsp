@@ -95,7 +95,7 @@
         </table>
     </div>
     <div>
-        <div id="toolBar" class="mini-toolbar" style="width: 100%;border-bottom: 0px">
+        <div style="width: 100%;border-bottom: 0px">
             <table>
                 <tr>
                     <td colspan="4" class="content" style="text-align: right">
