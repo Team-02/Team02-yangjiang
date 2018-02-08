@@ -100,20 +100,20 @@
                 <tr>
                     <td colspan="4" class="content" style="text-align: right">
 
-                        <button class="btn1" type="button" name="search"><img src="/imgs/query.png" style="width: 16px;height: 16px">查询</button>
+                        <button class="btn1" type="button" name="search" onclick="search()"><img src="/imgs/query.png" style="width: 16px;height: 16px">查询</button>
                     </td>
                 </tr>
             </table>
         </div>
-        <div id="datagrid1" class="mini-datagrid" style="width: 100%;">
+        <div id="datagrid1" class="mini-datagrid" style="width: 100%;" url="/selectprocess">
             <div property="columns">
                 <div type="checkcolumn"></div>
-                <div field="id" width="120">流程编号</div>
-                <div field="departmentname" width="120">流程名称</div>
-                <div field="department" width="120">所属部门</div>
-                <div field="address" width="120">当前环节</div>
-                <div field="address" width="120">提报人</div>
-                <div field="address" width="120">提报时间</div>
+                <div field="processNumber" width="120">流程编号</div>
+                <div field="processName" width="120">流程名称</div>
+                <div field="deptName" width="120">所属部门</div>
+                <div field="currentLink" width="120">当前环节</div>
+                <div field="applicantPerson" width="120">提报人</div>
+                <div field="applyTime" width="120">提报时间</div>
                 <div name="ctrl" width="120" headerAlign="center">办理</div>
             </div>
         </div>
@@ -157,7 +157,7 @@
 
         var btnEdit = this;
         mini.open({
-            url: "selectstudent.jsp",
+            url: "selectdepartment",
             title: "选择部门经理",
             width: 650,
             height: 380,
@@ -177,19 +177,23 @@
         });
 
     }
-    下边表格table
-    mini.parse();
+    /*审批(部门经理)弹出框的点击事件*/
 
+    var grid = mini.get("datagrid1");
+    grid.load();
+    //动态设置URL
+    // grid.setUrl("../data/AjaxService.jsp?method=SearchEmployees");
+    //也可以动态设置列 grid.setColumns([]);
 
-    var datagrid=mini.get("datagrid1");
-    datagrid.setUrl("/find");
-    datagrid.load();
-    function onkeyEnter() {
-        search();
+    //得到元素值,传给前端,值得回调
+    function GetData() {
+        var row = grid.getSelected();
+        return row;
     }
+
     function search() {
-        var key = $("#key").val();
-        datagrid.load({username:key})
+        var key = mini.get("key").getValue();
+        grid.load({processNumber: key});
     }
     grid.on("drawcell", function (e) {
         var record = e.record,
