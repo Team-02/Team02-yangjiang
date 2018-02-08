@@ -33,11 +33,12 @@
             width: 395px;
             height: 100%;
         }
+
         /*#toolBar{*/
-            /*position: absolute;*/
+        /*position: absolute;*/
         /*}*/
         /*#button1{*/
-            /*margin-left: 600px;*/
+        /*margin-left: 600px;*/
         /*}*/
 
         .t {
@@ -48,15 +49,17 @@
         html body .user_add .mini-buttonedit-icon {
             background: url(/scripts/miniui/res/images/user_add.png) no-repeat 50% 50%;
         }
+
         html body .group_add .mini-buttonedit-icon {
             background: url(/scripts/miniui/res/images/group_add.png) no-repeat 50% 50%;
         }
+
         /*.high{*/
         /*height: 80px;*/
         /*vertical-align: middle;*/
         /*}*/
-        div{
-            background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA,#E0F1FA );
+        div {
+            background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA, #E0F1FA);
         }
     </style>
 </head>
@@ -68,7 +71,8 @@
             <td colspan="4">当前位置:个人工作台 >> 待办任务</td>
         </tr>
     </table>
-    <div id="panel1" class="mini-panel" title="查询条件" iconCls="icon-add" style="width:100%;height:100%; background-color: #cbe1fa"
+    <div id="panel1" class="mini-panel" title="查询条件" iconCls="icon-add"
+         style="width:100%;height:100%; background-color: #cbe1fa"
          showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="false"
          collapseOnTitleClick="true">
         <table>
@@ -76,7 +80,11 @@
                 <td class="t">申请时间</td>
                 <td><input class="mini-datepicker" name="birthday" style="width: 400px"/></td>
                 <td class="t">关键字</td>
-                <td><input type="text" id="pointName"></td>
+                <td>
+                    <div class="mini-toolbar" style="text-align:center;line-height:30px;" borderStyle="border:0;">
+                        <input id="key" class="mini-textbox" style="width:150px;" onenter="onKeyEnter"/>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td class="t">申请人</td>
@@ -97,21 +105,23 @@
             <table>
                 <tr>
                     <td colspan="4" class="content" style="text-align: right">
-
-                        <button class="btn1" type="button" name="search" onclick="onClick()"><img src="/imgs/query.png" style="width: 16px;height: 16px">查询</button>
+                        <div class="mini-toolbar" style="text-align:center;line-height:30px;" borderStyle="border:0;">
+                            <a class="mini-button" style="width:60px;" onclick="search()"><img src="/imgs/query.png"
+                                                                                               style="width: 16px;height: 16px">查询</a>
+                        </div>
                     </td>
                 </tr>
             </table>
         </div>
-        <div id="datagrid1" class="mini-datagrid" style="width: 100%;">
+        <div id="datagrid1" class="mini-datagrid" style="width: 100%;" url="/selectprocess">
             <div property="columns">
                 <div type="checkcolumn"></div>
-                <div field="id" width="120">流程编号</div>
-                <div field="departmentname" width="120">流程名称</div>
-                <div field="department" width="120">所属部门</div>
-                <div field="address" width="120">当前环节</div>
-                <div field="address" width="120">提报人</div>
-                <div field="address" width="120">提报时间</div>
+                <div field="processNumber" width="120">流程编号</div>
+                <div field="processName" width="120">流程名称</div>
+                <div field="deptName" width="120">所属部门</div>
+                <div field="currentLink" width="120">当前环节</div>
+                <div field="applicantPerson" width="120">提报人</div>
+                <div field="applyTime" width="120">提报时间</div>
                 <div name="ctrl" width="120" headerAlign="center">办理</div>
             </div>
         </div>
@@ -122,6 +132,22 @@
     mini.parse();
     /*审批(部门经理)弹出框的点击事件*/
 
+    var grid = mini.get("datagrid1");
+    grid.load();
+    //动态设置URL
+    // grid.setUrl("../data/AjaxService.jsp?method=SearchEmployees");
+    //也可以动态设置列 grid.setColumns([]);
+
+    //得到元素值,传给前端,值得回调
+    function GetData() {
+        var row = grid.getSelected();
+        return row;
+    }
+
+    function search() {
+        var key = mini.get("key").getValue();
+        grid.load({processNumber: key});
+    }
     function getForm() {
         var form = new mini.Form("#form1");
         var data = form.getData();      //获取表单多个控件的数据
@@ -136,16 +162,16 @@
 
         /*2.获得当前其他信息tab表单中的数据*/
         var otherData = getForm();
-        console.log(baseData+"--"+otherData);
+        console.log(baseData + "--" + otherData);
         alert("提交成功");
         /*3.将数据传递个后台*/
 //        $("#base").val(baseData);
         $("#other").val(otherData);
         /*通过ajax上传文件 数据*/
         $.ajaxFileUpload({
-            url:"select",
+            url: "select",
 //            fileElementId:$("#upload"),/*文件上传的id域*/
-            success:function (data) {
+            success: function (data) {
 
                 console.log(data);
 
@@ -198,8 +224,6 @@
         });
 
     }
-    //下边表格table
-    mini.parse();
 
     datagrid.on("drawcell", function (e) {
         var record = e.record,

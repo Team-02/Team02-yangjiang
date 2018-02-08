@@ -2,8 +2,10 @@ package com.ssm.controller;
 
 import com.ssm.domain.BaseResult;
 import com.ssm.domain.Department;
+import com.ssm.domain.Process;
 import com.ssm.domain.Staff;
 import com.ssm.service.DepartmentService;
+import com.ssm.service.ProcessService;
 import com.ssm.service.StaffService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,8 @@ public class TestController {
     private StaffService staffService;
     @Resource
     private DepartmentService departmentService;
+    @Resource
+    private ProcessService processService;
     @RequestMapping(value = {"","/"})
     public String index(){
         return "index";
@@ -140,6 +144,13 @@ public class TestController {
         BaseResult<Department> baseResult = departmentService.select(deptName,pageIndex,pageSize);
         return baseResult;
     }
+    @RequestMapping(value = "/selectprocess")
+    @ResponseBody
+    public BaseResult<Process> selectprocess(String processNumber, int pageIndex, int pageSize){
+        BaseResult<Process> baseResult = processService.select(processNumber,pageIndex,pageSize);
+        return baseResult;
+    }
+
     @RequestMapping(value = "/y-EmployeeWindow")
     public String EmployeeWindow(){
         return "y-EmployeeWindow";
