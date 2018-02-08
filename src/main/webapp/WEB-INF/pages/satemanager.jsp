@@ -92,7 +92,7 @@
                     <td colspan="4" class="content" style="text-align: right">
 
                         <button class="btn1" type="button" name="search"><img src="/imgs/query.png" style="width: 16px;height: 16px">查询</button>
-                        <a class="mini-button " plain="true" iconCls="icon-add" onclick="onClickadd">增加</a>
+                        <a class="mini-button " plain="true" iconCls="icon-add" onclick="add()">增加</a>
                         <a class="mini-button" plain="true" iconCls="icon-remove" onclick="onClickdelete">删除</a>
                     </td>
                 </tr>
@@ -166,6 +166,24 @@
             }
         });
 
+    }
+    function add() {
+
+        mini.open({
+            targetWindow: window,
+
+            url:"y-EmployeeWindow",
+            title: "新增员工", width: 600, height: 400,
+            onload: function () {
+                var iframe = this.getIFrameEl();
+                var data = { action: "new" };
+                iframe.contentWindow.SetData(data);
+            },
+            ondestroy: function (action) {
+
+                grid.reload();
+            }
+        });
     }
     //下边表格table
     //    mini.parse();

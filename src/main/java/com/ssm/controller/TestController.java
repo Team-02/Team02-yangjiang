@@ -140,4 +140,8 @@ public class TestController {
         BaseResult<Department> baseResult = departmentService.select(deptName,pageIndex,pageSize);
         return baseResult;
     }
+    @RequestMapping(value = "/y-EmployeeWindow")
+    public String EmployeeWindow(){
+        return "y-EmployeeWindow";
+    }
 }
