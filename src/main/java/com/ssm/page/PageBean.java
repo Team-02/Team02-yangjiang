@@ -22,6 +22,7 @@ public class PageBean<T> {
 
     private String deptName;
     private String name;//条件语句中的关键字
+    private String processNumber;
 
 //    private String url;  // 它就是url后的条件！
 
@@ -165,5 +166,13 @@ public class PageBean<T> {
 
     public void setDeptName(String deptName) {
         this.deptName = deptName;
+    }
+
+    public String getProcessNumber() {
+        return processNumber;
+    }
+
+    public void setProcessNumber(String processNumber) {
+        this.processNumber = processNumber;
     }
 }

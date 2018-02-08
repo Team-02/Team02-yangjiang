@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.mapper.ProcessMapper">
+    <resultMap id="processMap" type="com.ssm.domain.Process">
+        <id property="id" column="id"/>
+        <result property="processNumber" column="process_number"/>
+        <result property="processName" column="process_name"/>
+        <result property="deptName" column="dept_name"/>
+        <result property="currentLink" column="current_link"/>
+        <result property="applicantPerson" column="applicant_person"/>
+        <result property="applyTime" column="apply_time"/>
+    </resultMap>
+    <sql id="processColumns">
+        id,process_number,process_name,dept_name,current_link,applicant_person,apply_time
+    </sql>
+    <sql id="selectProcess">
+        <where>
+            1 = 1
+            <if test="processNumber !=null and processNumber != ''">
+                AND process_number LIKE '%${processNumber}%'
+            </if>
+        </where>
+    </sql>
+    <select id="pageSelect" resultMap="processMap" parameterType="com.ssm.page.PageBean">
+        SELECT
+        <include refid="processColumns"/>
+        FROM team02_process
+        <include refid="selectProcess"/>
+        limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="intTotal" resultType="java.lang.Integer">
+        SELECT COUNT(id) FROM team02_process
+        <if test="value != null and value !=''">
+            WHERE process_number LIKE '%${value}%'
+        </if>
+
+    </select>
+</mapper>
