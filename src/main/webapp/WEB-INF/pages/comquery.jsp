@@ -19,15 +19,20 @@
             font-size: small;
             font-family: "Heiti SC";
             background: #E0F1FA;
-            border: 2px solid white;
+
             border-collapse: collapse;
-            padding: 5px;
+
             width: 100%;
 
         }
+        tr{
+            border:1px solid white;
+        }
 
         td {
+            border:1px solid white;
             width: auto;
+
         }
 
         input {
@@ -105,7 +110,7 @@
         </table>
     </div>
     <div>
-        <div id="toolBar" class="mini-toolbar" style="width: 100%;border-bottom: 0px">
+        <div  style="width: 100%;border-bottom: 0px">
             <table>
                 <tr>
                     <td colspan="4" class="content" style="text-align: right">

@@ -20,15 +20,16 @@
             font-size: small;
             font-family: "Heiti SC";
             background: #E0F1FA;
-            border: 2px solid white;
+
             border-collapse: collapse;
-            padding: 5px;
+
             width: 100%;
 
         }
 
         td {
             width: auto;
+            border:1px solid white;
         }
 
         input {
@@ -54,6 +55,9 @@
         }
         div{
             background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA,#E0F1FA );
+        }
+        tr{
+            border:1px solid white;
         }
 
         /*.high{*/
@@ -93,7 +97,7 @@
         </table>
     </div>
     <div>
-        <div id="toolBar" class="mini-toolbar" style="width: 100%;border-bottom: 0px">
+        <div  style="width: 100%;border-bottom: 0px">
             <table>
                 <tr>
                     <td colspan="4" class="content" style="text-align: right">
