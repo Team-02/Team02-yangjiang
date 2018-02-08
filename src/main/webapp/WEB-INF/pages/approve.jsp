@@ -56,7 +56,7 @@
 <table border="0" cellpadding="1" cellspacing="2">
     <table>
         <tr>
-            <td colspan="4">当前位置:科研项目管理 >> 承接外部科技项目申报</td>
+            <td colspan="4">当前位置:科研项目管理 >> 审批</td>
         </tr>
     </table>
     <div id="panel1" class="mini-panel" title="项目基本信息" iconCls="icon-add"

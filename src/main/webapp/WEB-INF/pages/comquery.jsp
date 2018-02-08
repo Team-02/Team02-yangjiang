@@ -120,7 +120,7 @@
                 </tr>
             </table>
         </div>
-        <div id="datagrid1" class="mini-datagrid" style="width: 100%;">
+        <div id="datagrid1" class="mini-datagrid" style="width: 100%;" url="selectprocess">
             <div property="columns">
                 <div type="checkcolumn"></div>
                 <div field="processNumber" width="120">流程编号</div>
@@ -233,16 +233,19 @@
 
     }
 
-    datagrid.on("drawcell", function (e) {
+
+    grid.on("drawcell", function (e) {
         var record = e.record,
             column = e.column;
 
+
+        //ctrl列，超连接操作按钮
+        if (column.name == "ctrl") {
+            e.cellStyle = "text-align:center";
+            e.cellHtml = "<a href='approve'>办理</a>";
+        <%--<a href='approve?id=${id}'>办理</a>--%>
+        }
     })
-    //ctrl列，超连接操作按钮
-    if (column.name == "ctrl") {
-        e.cellStyle = "text-align:center";
-        e.cellHtml = "<input type='button' value='办理' onclick=''/>";
-    }
 </script>
 </body>
 </html>

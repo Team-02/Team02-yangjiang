@@ -223,16 +223,18 @@
 
     }
 
-    datagrid.on("drawcell", function (e) {
+    grid.on("drawcell", function (e) {
         var record = e.record,
             column = e.column;
 
+
+        //ctrl列，超连接操作按钮
+        if (column.name == "ctrl") {
+            e.cellStyle = "text-align:center";
+            e.cellHtml = "<a href='approve'>办理</a>";
+            <%--<a href='approve?id=${id}'>办理</a>--%>
+        }
     })
-    //ctrl列，超连接操作按钮
-    if (column.name == "ctrl") {
-        e.cellStyle = "text-align:center";
-        e.cellHtml = "<input type='button' value='办理' onclick=''/>";
-    }
 </script>
 </body>
 </html>

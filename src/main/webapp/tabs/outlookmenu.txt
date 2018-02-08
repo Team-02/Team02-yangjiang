@@ -5,7 +5,6 @@
 	{ id: "keyan", text: "科研项目管理"},
 	{ id: "ky", pid: "keyan", text: "科研项目申报与评审", url: "/y-tabs"},
 	{ id: "kychengjie", pid: "keyan", text: "承接外部科技项目申报", url: "/continuehome"},
-    { id: "shenpi", pid: "keyan", text: "审批", url: "/approvehome"},
 	{ id: "editUser",  text: "综合管理"},
 	{ id: "addRighte", pid: "editUser", text: "任务管理", iconCls: "Note", url: "/comqueryhome", iconPosition: "top" },
 	{ id: "addRighte", pid: "editUser", text: "卫星库管理人管理", iconCls: "Note", url: "/satemanager", iconPosition: "top" },
