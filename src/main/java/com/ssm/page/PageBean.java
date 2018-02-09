@@ -23,8 +23,17 @@ public class PageBean<T> {
     private String deptName;
     private String name;//条件语句中的关键字
     private String processNumber;
+    private String staff_name;
 
-//    private String url;  // 它就是url后的条件！
+    public String getStaff_name() {
+        return staff_name;
+    }
+
+    public void setStaff_name(String staff_name) {
+        this.staff_name = staff_name;
+    }
+
+    //    private String url;  // 它就是url后的条件！
 
 
     public PageBean(int pageNum, int pageSize, int totalRecord) {
@@ -49,6 +58,9 @@ public class PageBean<T> {
 
         // 1.1  开始索引
         this.startIndex = (this.pageNum - 1) * this.pageSize;
+        //add by  2018.2.7 20:37 排除开始索引是负数
+        this.startIndex = startIndex < 0? 0 : startIndex;
+
 
         //2 动态条 最多显示10分页，前5后4
         // 2.1 默认值
