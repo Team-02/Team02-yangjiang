@@ -11,6 +11,6 @@ import java.util.List;
  */
 public interface ProcessMapper {
     List<Process> pageSelect(PageBean<Process> pageBean);
-    Integer intTotal(String processNumber);
+    Integer intTotal(Process process);
     List<Process> selectAll();
 }

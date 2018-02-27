@@ -76,9 +76,11 @@
         <table>
             <tr>
                 <td class="t">申请时间</td>
-                <td><input class="mini-datepicker" name="birthday" style="width: 400px"/></td>
+                <td><input id="shentime" class="mini-datepicker" name="birthday" style="width: 400px"/></td>
                 <td class="t">关键字</td>
-                <td><input type="text" id="pointName"></td>
+                <td>
+                    <input  id="key" class="mini-textbox" style="width:400px;" onenter="onKeyEnter"/>
+                </td>
             </tr>
             <tr>
                 <td class="t">申请人</td>
@@ -99,8 +101,7 @@
             <table>
                 <tr>
                     <td colspan="4" class="content" style="text-align: right">
-
-                        <button class="btn1" type="button" name="search" onclick="search()"><img src="/imgs/query.png" style="width: 16px;height: 16px">查询</button>
+                        <a class="mini-button" style="width:60px;" onclick="search()"><img src="/imgs/query.png" style="width: 16px;height: 16px">查询</a>
                     </td>
                 </tr>
             </table>
@@ -122,8 +123,39 @@
 <script>
     /*加载mini组件 后面get方法才好用*/
     mini.parse();
-    /*审批(部门经理)弹出框的点击事件*/
 
+    //    mini.formatDate ( Date, "yyyy-MM-dd HH:mm:ss" );
+    var grid = mini.get("datagrid1");
+    grid.load();
+    //动态设置URL
+    // grid.setUrl("../data/AjaxService.jsp?method=SearchEmployees");
+    //也可以动态设置列 grid.setColumns([]);
+
+    //得到元素值,传给前端,值得回调
+    function GetData() {
+        var row = grid.getSelected();
+        return row;
+    }
+
+    /*将中国标准时间更改为年-月-日*/
+    function formatTen(num) {
+        return num > 9 ? (num + "") : ("0" + num);
+    }
+    function formatDate(date) {
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        var second = date.getSeconds();
+        return year + "-" + formatTen(month) + "-" + formatTen(day);
+    }
+    function search() {
+        var key = mini.get("key").getValue();
+        var key1 = mini.get("shentime").getValue();
+        var time = formatDate(key1);
+        grid.load({processNumber: key,applyTime:time});
+    }
     function getForm() {
         var form = new mini.Form("#form1");
         var data = form.getData();      //获取表单多个控件的数据
@@ -132,6 +164,29 @@
     }
 
 
+    function onClick() {
+//        /*1.获得基本信息tab表单中的数据 cookies取*/
+//        var baseData = $.cookie("form1");
+
+        /*2.获得当前其他信息tab表单中的数据*/
+        var otherData = getForm();
+        console.log(baseData + "--" + otherData);
+        alert("提交成功");
+        /*3.将数据传递个后台*/
+//        $("#base").val(baseData);
+        $("#other").val(otherData);
+        /*通过ajax上传文件 数据*/
+        $.ajaxFileUpload({
+            url: "select",
+//            fileElementId:$("#upload"),/*文件上传的id域*/
+            success: function (data) {
+
+                console.log(data);
+
+            }
+
+        })
+    }
     function onButtonEdit1(e) {
         var btnEdit = this;
         mini.open({
@@ -158,7 +213,7 @@
         var btnEdit = this;
         mini.open({
             url: "selectdepartment",
-            title: "选择部门经理",
+            title: "所属部门",
             width: 650,
             height: 380,
             ondestroy: function (action) {
@@ -168,8 +223,8 @@
                     var data = iframe.contentWindow.GetData();
                     data = mini.clone(data);    //必须克隆
                     if (data) {
-                        btnEdit.setValue(data.sid);
-                        btnEdit.setText(data.sname);
+                        btnEdit.setValue(data.deptId);
+                        btnEdit.setText(data.deptName);
                     }
                 }
 
@@ -177,24 +232,7 @@
         });
 
     }
-    /*审批(部门经理)弹出框的点击事件*/
 
-    var grid = mini.get("datagrid1");
-    grid.load();
-    //动态设置URL
-    // grid.setUrl("../data/AjaxService.jsp?method=SearchEmployees");
-    //也可以动态设置列 grid.setColumns([]);
-
-    //得到元素值,传给前端,值得回调
-    function GetData() {
-        var row = grid.getSelected();
-        return row;
-    }
-
-    function search() {
-        var key = mini.get("key").getValue();
-        grid.load({processNumber: key});
-    }
     grid.on("drawcell", function (e) {
         var record = e.record,
             column = e.column;

@@ -81,7 +81,7 @@
         <table>
             <tr>
                 <td class="t">申请时间</td>
-                <td><input class="mini-datepicker" name="birthday" style="width: 400px"/></td>
+                <td><input id="shentime" class="mini-datepicker" name="birthday" style="width: 400px"/></td>
                 <td class="t">关键字</td>
                 <td>
                         <input  id="key" class="mini-textbox" style="width:400px;" onenter="onKeyEnter"/>
@@ -128,8 +128,8 @@
 <script>
     /*加载mini组件 后面get方法才好用*/
     mini.parse();
-    /*审批(部门经理)弹出框的点击事件*/
 
+//    mini.formatDate ( Date, "yyyy-MM-dd HH:mm:ss" );
     var grid = mini.get("datagrid1");
     grid.load();
     //动态设置URL
@@ -142,9 +142,24 @@
         return row;
     }
 
+    /*将中国标准时间更改为年-月-日*/
+    function formatTen(num) {
+        return num > 9 ? (num + "") : ("0" + num);
+    }
+    function formatDate(date) {
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        var second = date.getSeconds();
+        return year + "-" + formatTen(month) + "-" + formatTen(day);
+    }
     function search() {
         var key = mini.get("key").getValue();
-        grid.load({processNumber: key});
+        var key1 = mini.get("shentime").getValue();
+        var time = formatDate(key1);
+        grid.load({processNumber: key,applyTime:time});
     }
     function getForm() {
         var form = new mini.Form("#form1");

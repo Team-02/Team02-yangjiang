@@ -20,9 +20,10 @@
         <where>
             1 = 1
             <if test="processNumber !=null and processNumber != ''">
-
                 AND process_number LIKE '%${processNumber}%'
-
+            </if>
+            <if test="applyTime !=null and applyTime !=''">
+                AND apply_time = '${applyTime}'
             </if>
         </where>
     </sql>
@@ -34,11 +35,9 @@
         limit #{startIndex},#{pageSize}
     </select>
 
-    <select id="intTotal" resultType="java.lang.Integer">
+    <select id="intTotal" resultType="java.lang.Integer" parameterType="com.ssm.domain.Process">
         SELECT COUNT(id) FROM team02_process
-        <if test="value != null and value !=''">
-            WHERE process_number LIKE '%${value}%'
-        </if>
+        <include refid="selectProcess"/>
     </select>
     <select id="selectAll" resultMap="processMap">
         SELECT

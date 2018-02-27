@@ -146,8 +146,9 @@ public class TestController {
     }
     @RequestMapping(value = "/selectprocess")
     @ResponseBody
-    public BaseResult<Process> selectprocess(String processNumber, int pageIndex, int pageSize){
-        BaseResult<Process> baseResult = processService.select(processNumber,pageIndex,pageSize);
+    public BaseResult<Process> selectprocess(String processNumber,String applyTime, int pageIndex, int pageSize){
+        System.out.println(applyTime);
+        BaseResult<Process> baseResult = processService.select(processNumber,applyTime,pageIndex,pageSize);
         return baseResult;
     }
 

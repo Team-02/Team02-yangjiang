@@ -7,6 +7,7 @@ import java.util.List;
  */
 public class PageBean<T> {
 
+
     // 必选项
     private int pageNum;            //当前页 -- 浏览器传递
     private int pageSize;         //每页显示个数 -- 固定值（浏览器传递）
@@ -23,6 +24,7 @@ public class PageBean<T> {
     private String deptName;
     private String name;//条件语句中的关键字
     private String processNumber;
+    private String applyTime;
     private String staff_name;
 
     public String getStaff_name() {
@@ -187,4 +189,13 @@ public class PageBean<T> {
     public void setProcessNumber(String processNumber) {
         this.processNumber = processNumber;
     }
+
+    public String getApplyTime() {
+        return applyTime;
+    }
+
+    public void setApplyTime(String applyTime) {
+        this.applyTime = applyTime;
+    }
+
 }

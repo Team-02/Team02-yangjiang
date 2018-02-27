@@ -10,24 +10,20 @@ public class Process implements Serializable{
 
     private int id;
     private String processNumber,processName,deptName,currentLink,applicantPerson;
-    private Date applyTime;
+    private String applyTime;
     private String print;
 
     public Process() {
     }
 
-    @Override
-    public String toString() {
-        return "Process{" +
-                "id=" + id +
-                ", processNumber='" + processNumber + '\'' +
-                ", processName='" + processName + '\'' +
-                ", deptName='" + deptName + '\'' +
-                ", currentLink='" + currentLink + '\'' +
-                ", applicantPerson='" + applicantPerson + '\'' +
-                ", applyTime=" + applyTime +
-                ", print='" + print + '\'' +
-                '}';
+    public Process(String processNumber, String processName, String deptName, String currentLink, String applicantPerson, String applyTime, String print) {
+        this.processNumber = processNumber;
+        this.processName = processName;
+        this.deptName = deptName;
+        this.currentLink = currentLink;
+        this.applicantPerson = applicantPerson;
+        this.applyTime = applyTime;
+        this.print = print;
     }
 
     public int getId() {
@@ -78,11 +74,11 @@ public class Process implements Serializable{
         this.applicantPerson = applicantPerson;
     }
 
-    public Date getApplyTime() {
+    public String getApplyTime() {
         return applyTime;
     }
 
-    public void setApplyTime(Date applyTime) {
+    public void setApplyTime(String applyTime) {
         this.applyTime = applyTime;
     }
 
@@ -94,13 +90,17 @@ public class Process implements Serializable{
         this.print = print;
     }
 
-    public Process(String processNumber, String processName, String deptName, String currentLink, String applicantPerson, Date applyTime, String print) {
-        this.processNumber = processNumber;
-        this.processName = processName;
-        this.deptName = deptName;
-        this.currentLink = currentLink;
-        this.applicantPerson = applicantPerson;
-        this.applyTime = applyTime;
-        this.print = print;
+    @Override
+    public String toString() {
+        return "Process{" +
+                "id=" + id +
+                ", processNumber='" + processNumber + '\'' +
+                ", processName='" + processName + '\'' +
+                ", deptName='" + deptName + '\'' +
+                ", currentLink='" + currentLink + '\'' +
+                ", applicantPerson='" + applicantPerson + '\'' +
+                ", applyTime='" + applyTime + '\'' +
+                ", print='" + print + '\'' +
+                '}';
     }
 }
