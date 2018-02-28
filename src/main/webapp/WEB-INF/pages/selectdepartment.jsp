@@ -29,8 +29,8 @@
     >
         <div property="columns">
             <div type="indexcolumn" ></div>
-            <div field="deptId" width="120" headerAlign="center" allowSort="true">员工编号</div>
-            <div field="deptName" width="100%" headerAlign="center" allowSort="true">员工姓名</div>
+            <div field="deptId" width="120" headerAlign="center" allowSort="true">部门编号</div>
+            <div field="deptName" width="100%" headerAlign="center" allowSort="true">部门名称</div>
 
         </div>
     </div>

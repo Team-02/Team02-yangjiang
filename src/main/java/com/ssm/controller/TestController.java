@@ -5,6 +5,7 @@ import com.ssm.domain.Process;
 import com.ssm.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -158,9 +159,9 @@ public class TestController {
     }
     @RequestMapping(value = "/selectprocess")
     @ResponseBody
-    public BaseResult<Process> selectprocess(String processNumber,String applyTime, int pageIndex, int pageSize){
-        System.out.println(applyTime);
-        BaseResult<Process> baseResult = processService.select(processNumber,applyTime,pageIndex,pageSize);
+    public BaseResult<Process> selectprocess(String processNumber, String applyTime, String applicantPerson,String deptName,int pageIndex, int pageSize){
+        System.out.println(applicantPerson);
+        BaseResult<Process> baseResult = processService.select(processNumber,applyTime,applicantPerson,deptName,pageIndex,pageSize);
         return baseResult;
     }
 

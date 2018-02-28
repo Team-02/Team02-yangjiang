@@ -11,6 +11,6 @@ import java.util.List;
  */
 public interface ProcessService {
 
-    BaseResult<Process> select(String processNumber,String applyTime, int pageIndex, int pageSize);
+    BaseResult<Process> select(String processNumber,String applyTime,String applicantPerson,String deptName, int pageIndex, int pageSize);
 //    List<Process> selectAll();
 }

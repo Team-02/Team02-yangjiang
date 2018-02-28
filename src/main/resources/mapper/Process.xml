@@ -25,6 +25,12 @@
             <if test="applyTime !=null and applyTime !=''">
                 AND apply_time = '${applyTime}'
             </if>
+            <if test="applicantPerson !=null and applicantPerson !=''">
+                AND applicant_person = '${applicantPerson}'
+            </if>
+            <if test="deptName !=null and deptName !=''">
+                AND dept_name = '${deptName}'
+            </if>
         </where>
     </sql>
     <select id="pageSelect" resultMap="processMap" parameterType="com.ssm.page.PageBean">

@@ -142,6 +142,17 @@
         return row;
     }
 
+    function search() {
+        var key = mini.get("key").getValue();
+        var key1 = mini.get("shentime").getValue();
+        var time = null;
+        if (key1 !=null && key1 !=''){
+         time= formatDate(key1);
+        }
+        var person = mini.get("btnEdit1").getText();
+        var dept = mini.get("btnEdit2").getText();
+        grid.load({processNumber: key,applyTime:time,applicantPerson:person,deptName:dept});
+    }
     /*将中国标准时间更改为年-月-日*/
     function formatTen(num) {
         return num > 9 ? (num + "") : ("0" + num);
@@ -154,12 +165,6 @@
         var minute = date.getMinutes();
         var second = date.getSeconds();
         return year + "-" + formatTen(month) + "-" + formatTen(day);
-    }
-    function search() {
-        var key = mini.get("key").getValue();
-        var key1 = mini.get("shentime").getValue();
-        var time = formatDate(key1);
-        grid.load({processNumber: key,applyTime:time});
     }
     function getForm() {
         var form = new mini.Form("#form1");

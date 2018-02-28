@@ -91,7 +91,7 @@
                 <td class="t">所属部门</td>
                 <td>
                     <input value="" allowInput="false" id="btnEdit2" class="mini-buttonedit group_add"
-                           onbuttonclick="onButtonEdit1" name="a" textName="b" style="width: 400px"/>
+                           onbuttonclick="onButtonEdit2" name="a" textName="b" style="width: 400px"/>
                 </td>
             </tr>
         </table>
@@ -153,8 +153,13 @@
     function search() {
         var key = mini.get("key").getValue();
         var key1 = mini.get("shentime").getValue();
-        var time = formatDate(key1);
-        grid.load({processNumber: key,applyTime:time});
+        var time = null;
+        if (key1 !=null && key1 !=''){
+            time= formatDate(key1);
+        }
+        var person = mini.get("btnEdit1").getText();
+        var dept = mini.get("btnEdit2").getText();
+        grid.load({processNumber: key,applyTime:time,applicantPerson:person,deptName:dept});
     }
     function getForm() {
         var form = new mini.Form("#form1");

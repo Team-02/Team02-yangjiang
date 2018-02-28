@@ -49,6 +49,7 @@ public class PageBean<T> {
     private String name;//条件语句中的关键字
     private String processNumber;
     private String applyTime;
+    private String applicantPerson;
     private String staff_name;
 
     public String getStaff_name() {
@@ -222,4 +223,11 @@ public class PageBean<T> {
         this.applyTime = applyTime;
     }
 
+    public String getApplicantPerson() {
+        return applicantPerson;
+    }
+
+    public void setApplicantPerson(String applicantPerson) {
+        this.applicantPerson = applicantPerson;
+    }
 }

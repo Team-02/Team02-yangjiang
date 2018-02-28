@@ -24,15 +24,19 @@ public class ProcessServiceImpl implements ProcessService {
     @Resource
     private ProcessMapper processMapper;
 
-    public BaseResult<Process> select(String processNumber, String applyTime, int pageIndex, int pageSize) {
+    public BaseResult<Process> select(String processNumber, String applyTime,String applicantPerson,String deptName, int pageIndex, int pageSize) {
         BaseResult<Process> baseResult = new BaseResult<Process>();
         Process process = new Process();
         process.setProcessNumber(processNumber);
         process.setApplyTime(applyTime);
+        process.setApplicantPerson(applicantPerson);
+        process.setDeptName(deptName);
         int total = processMapper.intTotal(process);
         PageBean<Process> pageBean = new PageBean<Process>(pageIndex + 1, pageSize, total);
         pageBean.setProcessNumber(processNumber);
         pageBean.setApplyTime(applyTime);
+        pageBean.setApplicantPerson(applicantPerson);
+        pageBean.setDeptName(deptName);
         List<Process> processList = processMapper.pageSelect(pageBean);
         baseResult.setTotal(total);
         baseResult.setData(processList);
