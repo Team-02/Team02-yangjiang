@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>系统界面 OutlookMenu</title>
+    <title>阳江业务管理系统</title>
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link href="/css/demo.css" rel="stylesheet" type="text/css">

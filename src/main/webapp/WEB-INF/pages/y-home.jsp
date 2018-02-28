@@ -85,8 +85,8 @@
     function onLoginClick() {
         var form = new mini.Form("#loginForm");
 
-//        form.validate();
-//        if (form.isValid() == false) return;
+        form.validate();
+        if (form.isValid() == false) return;
 
 //        var loginName = mini.get("loginName").value;
 //        var password = mini.get("password").value;
@@ -128,14 +128,24 @@
         else
             return false;
     }
+//    function onUserNameValidation(e) {
+//        if (e.isValid) {
+//            if (isEmail(e.value) == false) {
+//                e.errorText = "必须输入邮件地址";
+//                e.isValid = false;
+//            }
+//        }
+//    }
+
     function onUserNameValidation(e) {
         if (e.isValid) {
-            if (isEmail(e.value) == false) {
-                e.errorText = "必须输入邮件地址";
+            if (e.value.length < 5) {
+                e.errorText = "登录名不能少于5个字符";
                 e.isValid = false;
             }
         }
     }
+
     function onPwdValidation(e) {
         if (e.isValid) {
             if (e.value.length < 5) {
