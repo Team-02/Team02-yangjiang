@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.mapper.JointUnitMapper">
+    <resultMap id="jointUnitMap" type="com.ssm.domain.JointUnit">
+        <id property="id" column="id"/>
+        <result property="uniteAppOrgName" column="UNITE_APP_ORG_NAME"/>
+    </resultMap>
+
+    <sql id="JointUnitColumns">
+        id,UNITE_APP_ORG_NAME
+    </sql>
+    <sql id="selectJointUnit">
+        <where>
+            1 = 1
+            <if test="uniteAppOrgName !=null and uniteAppOrgName != ''">
+                AND UNITE_APP_ORG_NAME LIKE '%${uniteAppOrgName}%'
+            </if>
+        </where>
+    </sql>
+    <select id="pageSelect" resultMap="jointUnitMap" parameterType="com.ssm.page.PageBean">
+        SELECT
+        <include refid="JointUnitColumns"/>
+        FROM team02_joint_unit
+        <include refid="selectJointUnit"/>
+        limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="intTotal" resultType="java.lang.Integer">
+        SELECT COUNT(id) FROM team02_joint_unit
+        <if test="value != null and value !=''">
+            WHERE UNITE_APP_ORG_NAME LIKE '%${value}%'
+        </if>
+    </select>
+
+    <select id="selectAll" resultMap="jointUnitMap">
+        SELECT * FROM team02_joint_unit
+    </select>
+</mapper>

@@ -22,19 +22,19 @@
     <select id="pageSelect" resultMap="ProjectUnitsMap" parameterType="com.ssm.page.PageBean">
         SELECT
         <include refid="ProjectUnitsColumns"/>
-        FROM team02.team02_project_units
+        FROM team02_project_units
         <include refid="selectProjectUnits"/>
         limit #{startIndex},#{pageSize}
     </select>
 
     <select id="intTotal" resultType="java.lang.Integer">
-        SELECT COUNT(id) FROM team02.team02_project_units
+        SELECT COUNT(id) FROM team02_project_units
         <if test="value != null and value !=''">
             WHERE APP_ORG_NAME LIKE '%${value}%'
         </if>
     </select>
 
     <select id="selectAll" resultMap="ProjectUnitsMap">
-        SELECT * FROM team02.team02_project_units
+        SELECT * FROM team02_project_units
     </select>
 </mapper>

@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface ProjectUnitsMapper {
     List<ProjectUnits> pageSelect(PageBean<ProjectUnits> pageBean);
-    Integer intTotal(String deptName);
+    Integer intTotal(String appOrgName);
     List<ProjectUnits> selectAll();
 }

@@ -8,6 +8,7 @@ import com.ssm.page.PageBean;
 import com.ssm.service.ProjectUnitsService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -15,6 +16,7 @@ import java.util.List;
  */
 @Service("projectUnitsService")
 public class ProjectUnitsImpl implements ProjectUnitsService{
+    @Resource
     private ProjectUnitsMapper projectUnitsMapper;
 
     public BaseResult<ProjectUnits> select(String appOrgName, int pageIndex, int pageSize) {

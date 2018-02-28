@@ -21,6 +21,7 @@ public class PageBean<T> {
     private int begin;                //循环开始
     private int end;                //循环结束
 
+//    项目申报单位
     private String appOrgName;
 
     public String getAppOrgName() {
@@ -30,6 +31,19 @@ public class PageBean<T> {
     public void setAppOrgName(String appOrgName) {
         this.appOrgName = appOrgName;
     }
+
+//    联合申报单位
+    private String uniteAppOrgName;
+
+    public String getUniteAppOrgName() {
+        return uniteAppOrgName;
+    }
+
+    public void setUniteAppOrgName(String uniteAppOrgName) {
+        this.uniteAppOrgName = uniteAppOrgName;
+    }
+
+
 
     private String deptName;
     private String name;//条件语句中的关键字

@@ -24,12 +24,12 @@
 <div class="mini-fit">
 
     <div id="datagrid1" class="mini-datagrid" style="width:100%;height:100%;"
-         url="/selectproject" idField="id" allowResize="true"
+         url="/selectjoint" idField="id" allowResize="true"
          borderStyle="border-left:0;border-right:0;" onrowdblclick="onRowDblClick">
         <div property="columns">
             <div type="indexcolumn" ></div>
-            <div field="id" width="120" headerAlign="center" allowSort="true">申报单位编号</div>
-            <div field="appOrgName" width="100%" headerAlign="center" allowSort="true">项目申报单位</div>
+            <div field="id" width="120" headerAlign="center" allowSort="true">联合申报单位</div>
+            <div field="uniteAppOrgName" width="100%" headerAlign="center" allowSort="true">联合申报单位</div>
 
         </div>
     </div>
@@ -60,7 +60,7 @@
 
     function search() {
         var key = mini.get("key").getValue();
-        grid.load({ appOrgName: key });
+        grid.load({ uniteAppOrgName: key });
     }
     function onKeyEnter(e) {
         search();

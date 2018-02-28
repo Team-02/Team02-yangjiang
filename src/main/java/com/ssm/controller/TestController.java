@@ -1,12 +1,8 @@
 package com.ssm.controller;
 
-import com.ssm.domain.BaseResult;
-import com.ssm.domain.Department;
+import com.ssm.domain.*;
 import com.ssm.domain.Process;
-import com.ssm.domain.Staff;
-import com.ssm.service.DepartmentService;
-import com.ssm.service.ProcessService;
-import com.ssm.service.StaffService;
+import com.ssm.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,6 +21,8 @@ public class TestController {
     private DepartmentService departmentService;
     @Resource
     private ProcessService processService;
+    @Resource
+    private ProjectUnitsService projectUnitsService;
     @RequestMapping(value = {"","/"})
     public String index(){
         return "y-home";
@@ -170,4 +168,34 @@ public class TestController {
     public String EmployeeWindow(){
         return "y-EmployeeWindow";
     }
+
+    @Resource
+    private JointUnitService jointUnitService;
+
+    @RequestMapping(value = "/selectjoint")
+    @ResponseBody
+    public BaseResult<JointUnit> selectjoint(String uniteAppOrgName, int pageIndex, int pageSize){
+        BaseResult<JointUnit> baseResult = jointUnitService.select(uniteAppOrgName,pageIndex,pageSize);
+        return baseResult;
+    }
+
+    @RequestMapping(value = "/y-page1-2")
+    public String page1_2(){
+        return "y-page1-2";
+    }
+
+
+    @RequestMapping(value = "/selectproject")
+    @ResponseBody
+    public BaseResult<ProjectUnits> selectproject(String appOrgName,int pageIndex,int pageSize){
+        System.out.println(appOrgName);
+        BaseResult<ProjectUnits> baseResult = projectUnitsService.select(appOrgName,pageIndex,pageSize);
+        return baseResult;
+    }
+
+    @RequestMapping(value = "/y-page1-1")
+    public String page1_1(){
+        return "y-page1-1";
+    }
+
 }
