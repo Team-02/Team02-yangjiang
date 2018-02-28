@@ -81,29 +81,33 @@
         <table>
             <tr>
                 <td class="t">申请时间</td>
-                <td><input class="mini-datepicker" name="birthday" style="width: 400px"/></td>
+                <td>
+                    <input id="shentime" class="mini-datepicker" name="birthday" style="width: 400px"/>
+                </td>
                 <td class="t">申请人</td>
                 <td>
                     <input value="" allowInput="false" id="btnEdit1" class="mini-buttonedit user_add"
                            onbuttonclick="onButtonEdit1" name="a" textName="b" style="width: 400px"/>
                 </td>
                 <td class="t">关键字</td>
-                <td><input type="text" id="pointName"></td>
+                <td>
+                    <input  id="key" class="mini-textbox" style="width:400px;" onenter="onKeyEnter"/>
+                </td>
             </tr>
             <tr>
                 <td class="t">流程类型</td>
                 <td>
-                    <input class="mini-combobox" style="width:400px;" textField="text" valueField="id"
+                    <input id="manager" class="mini-combobox" style="width:400px;" textField="text" valueField="id"
                            url="/tabs/flowtype.txt" value="" showNullItem="true" allowInput="false"/>
                 </td>
                 <td class="t">所属部门</td>
                 <td>
                     <input value="" allowInput="false" id="btnEdit2" class="mini-buttonedit group_add"
-                           onbuttonclick="onButtonEdit1" name="a" textName="b" style="width: 400px"/>
+                           onbuttonclick="onButtonEdit2" name="a" textName="b" style="width: 400px"/>
                 </td>
                 <td class="t">是否可以打印</td>
                 <td>
-                    <input class="mini-combobox" style="width:400px;" textField="text" valueField="id"
+                    <input id="yesorno" class="mini-combobox" style="width:400px;" textField="text" valueField="id"
                            url="/tabs/print.txt" value="" showNullItem="true" allowInput="false"/>
                 </td>
             </tr>
@@ -114,13 +118,12 @@
             <table>
                 <tr>
                     <td colspan="4" class="content" style="text-align: right">
-
-                        <button class="btn1" type="button" name="search" onclick="search()"><img src="/imgs/query.png" style="width: 16px;height: 16px">查询</button>
+                        <a class="mini-button" style="width:60px;" onclick="search()"><img src="/imgs/query.png" style="width: 16px;height: 16px">查询</a>
                     </td>
                 </tr>
             </table>
         </div>
-        <div id="datagrid1" class="mini-datagrid" style="width: 100%;" url="selectprocess">
+        <div id="datagrid1" class="mini-datagrid" style="width: 100%;" url="/selectprocess">
             <div property="columns">
                 <div type="checkcolumn"></div>
                 <div field="processNumber" width="120">流程编号</div>
@@ -138,8 +141,8 @@
 <script>
     /*加载mini组件 后面get方法才好用*/
     mini.parse();
-    /*审批(部门经理)弹出框的点击事件*/
 
+    //    mini.formatDate ( Date, "yyyy-MM-dd HH:mm:ss" );
     var grid = mini.get("datagrid1");
     grid.load();
     //动态设置URL
@@ -154,7 +157,30 @@
 
     function search() {
         var key = mini.get("key").getValue();
-        grid.load({processNumber: key});
+        var key1 = mini.get("shentime").getValue();
+        var time = null;
+        if (key1 !=null && key1 !=''){
+            time= formatDate(key1);
+        }
+        var person = mini.get("btnEdit1").getText();
+        var dept = mini.get("btnEdit2").getText();
+        var manager = mini.get("manager").getText();
+        var yesorno = mini.get("yesorno").getText();
+        grid.load({processNumber: key,applyTime:time,applicantPerson:person,
+            deptName:dept,processName:manager,print:yesorno});
+    }
+    /*将中国标准时间更改为年-月-日*/
+    function formatTen(num) {
+        return num > 9 ? (num + "") : ("0" + num);
+    }
+    function formatDate(date) {
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        var second = date.getSeconds();
+        return year + "-" + formatTen(month) + "-" + formatTen(day);
     }
     function getForm() {
         var form = new mini.Form("#form1");
@@ -233,7 +259,6 @@
 
     }
 
-
     grid.on("drawcell", function (e) {
         var record = e.record,
             column = e.column;
@@ -243,7 +268,7 @@
         if (column.name == "ctrl") {
             e.cellStyle = "text-align:center";
             e.cellHtml = "<a href='approve'>办理</a>";
-        <%--<a href='approve?id=${id}'>办理</a>--%>
+            <%--<a href='approve?id=${id}'>办理</a>--%>
         }
     })
 </script>

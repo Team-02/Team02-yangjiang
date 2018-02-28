@@ -31,6 +31,12 @@
             <if test="deptName !=null and deptName !=''">
                 AND dept_name = '${deptName}'
             </if>
+            <if test="processName !=null and processName !=''">
+                AND process_name = '${processName}'
+            </if>
+            <if test="print !=null and print !=''">
+                AND print = '${print}'
+            </if>
         </where>
     </sql>
     <select id="pageSelect" resultMap="processMap" parameterType="com.ssm.page.PageBean">

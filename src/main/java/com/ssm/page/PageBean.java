@@ -50,6 +50,8 @@ public class PageBean<T> {
     private String processNumber;
     private String applyTime;
     private String applicantPerson;
+    private String processName;
+    private String print;
     private String staff_name;
 
     public String getStaff_name() {
@@ -228,6 +230,23 @@ public class PageBean<T> {
     }
 
     public void setApplicantPerson(String applicantPerson) {
+
         this.applicantPerson = applicantPerson;
+    }
+
+    public String getProcessName() {
+        return processName;
+    }
+
+    public void setProcessName(String processName) {
+        this.processName = processName;
+    }
+
+    public String getPrint() {
+        return print;
+    }
+
+    public void setPrint(String print) {
+        this.print = print;
     }
 }
