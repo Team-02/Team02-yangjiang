@@ -90,11 +90,6 @@ public class TestController {
         return "index";
     }
 
-    @RequestMapping(value = "/error")
-    public String error(){
-        return "error";
-    }
-
     @RequestMapping(value = "/selectstaff")
     public String selectstaff(){
         return "selectstaff";

@@ -104,7 +104,7 @@
                 if (e=="success"){
                     window.location.href="/index"
                 }else {
-                    window.location.href="/error"
+                    alert("用户名或密码错误")
                 }
 
             }
