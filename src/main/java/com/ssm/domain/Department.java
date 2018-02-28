@@ -19,7 +19,7 @@ public class Department implements Serializable{
 
     @Override
     public String toString() {
-        return "Department{" +
+        return "DepartmentTest{" +
                 "deptId=" + deptId +
                 ", deptName='" + deptName + '\'' +
                 '}';

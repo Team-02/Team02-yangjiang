@@ -20,6 +20,16 @@ public class PageBean<T> {
     private int begin;                //循环开始
     private int end;                //循环结束
 
+    private String appOrgName;
+
+    public String getAppOrgName() {
+        return appOrgName;
+    }
+
+    public void setAppOrgName(String appOrgName) {
+        this.appOrgName = appOrgName;
+    }
+
     private String deptName;
     private String name;//条件语句中的关键字
     private String processNumber;

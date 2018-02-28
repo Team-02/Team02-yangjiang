@@ -31,6 +31,9 @@
         <if test="value != null and value !=''">
             WHERE dept_Name LIKE '%${value}%'
         </if>
+    </select>
 
+    <select id="selectAll" resultMap="departmentMap">
+        SELECT * FROM team02_department
     </select>
 </mapper>

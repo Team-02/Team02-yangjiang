@@ -170,8 +170,8 @@
 
         var btnEdit = this;
         mini.open({
-            url:"../../html/SelectGridWindow.html",
-            title: "选择部门经理",
+            url:"y-page1-1",
+            title: "选择申报单位",
             width: 650,
             height: 380,
             ondestroy: function (action) {
@@ -182,7 +182,7 @@
                     data = mini.clone(data);    //必须克隆
                     if (data) {
                         btnEdit.setValue(data.id);
-                        btnEdit.setText(data.name);
+                        btnEdit.setText(data.appOrgName);
                     }
                 }
 

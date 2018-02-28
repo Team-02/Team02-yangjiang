@@ -13,4 +13,5 @@ public interface DepartmentMapper {
 
     List<Department> pageSelect(PageBean<Department> pageBean);
     Integer intTotal(String deptName);
+    List<Department> selectAll();
 }

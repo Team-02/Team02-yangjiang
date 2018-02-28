@@ -30,4 +30,9 @@ public class DepartmentServiceImpl implements DepartmentService{
         baseResult.setData(departmentList);
         return baseResult;
     }
+
+    public List<Department> selectAll() {
+
+        return departmentMapper.selectAll();
+    }
 }
