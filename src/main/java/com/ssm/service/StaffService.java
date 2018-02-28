@@ -13,4 +13,6 @@ public interface StaffService {
     List<Staff> selectAll();
     BaseResult<Staff> select(String name, int pageIndex, int pageSize);
 
+    Staff selectStaff(Staff staff);
+
 }

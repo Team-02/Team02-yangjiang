@@ -14,4 +14,6 @@ public interface StaffMapper {
     List<Staff> selectAll();
     List<Staff> pageSelect(PageBean<Staff> pageBean);
     Integer intTotal(String name);
+
+    Staff selectStaff(Staff staff);
 }

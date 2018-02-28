@@ -27,7 +27,7 @@ public class TestController {
     private ProcessService processService;
     @RequestMapping(value = {"","/"})
     public String index(){
-        return "index";
+        return "y-home";
     }
     @RequestMapping(value = {"/alreadyhandle"})
     public String alreadyhandle(){
@@ -73,9 +73,28 @@ public class TestController {
     }
 
     @RequestMapping(value = "/y-home")
-    public String yhome(){
-        return "y-home";
+    @ResponseBody
+    public String yhome(Staff staff){
+
+        System.out.println("--+++++--"+staff);
+        Staff staff1 = staffService.selectStaff(staff);
+        if (staff1!= null){
+            return "success";
+        }else {
+            return "error";
+        }
     }
+
+    @RequestMapping(value = "/index")
+    public String index1(){
+        return "index";
+    }
+
+    @RequestMapping(value = "/error")
+    public String error(){
+        return "error";
+    }
+
     @RequestMapping(value = "/selectstaff")
     public String selectstaff(){
         return "selectstaff";

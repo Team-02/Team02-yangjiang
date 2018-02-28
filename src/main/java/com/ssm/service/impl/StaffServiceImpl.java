@@ -33,4 +33,9 @@ public class StaffServiceImpl implements StaffService {
         baseResult.setData(staffList);
         return baseResult;
     }
+
+    @Override
+    public Staff selectStaff(Staff staff) {
+        return staffMapper.selectStaff(staff);
+    }
 }

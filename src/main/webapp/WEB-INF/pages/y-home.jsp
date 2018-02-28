@@ -13,6 +13,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <link href="../../css/demo.css" rel="stylesheet" type="text/css" />
     <script src="../../scripts/boot.js" type="text/javascript"></script>
+    <script src="../../js/jquery-3.2.1.js" type="text/javascript"></script>
 
     <style type="text/css">
         body{
@@ -38,8 +39,6 @@
             background-position: center center;
             width: 100%;
         }
-
-
     </style>
 
 
@@ -53,14 +52,14 @@
             <tr>
                 <td style="width:60px;"><label for="username$text">帐号：</label></td>
                 <td>
-                    <input id="username" name="username" onvalidation="onUserNameValidation" class="mini-textbox" required="true" style="width:150px;"/>
+                    <input id="loginName" name="loginName" onvalidation="onUserNameValidation" class="mini-textbox" required="true" style="width:150px;"/>
 
                 </td>
             </tr>
             <tr>
                 <td style="width:60px;"><label for="pwd$text">密码：</label></td>
                 <td>
-                    <input id="pwd" name="pwd" onvalidation="onPwdValidation" class="mini-password" requiredErrorText="密码不能为空" required="true" style="width:150px;" onenter="onLoginClick"/>
+                    <input id="password" name="password" onvalidation="onPwdValidation" class="mini-password" requiredErrorText="密码不能为空" required="true" style="width:150px;" onenter="onLoginClick"/>
                 </td>
             </tr>
             <tr>
@@ -70,7 +69,7 @@
             <tr>
 
                 <td style="padding-top:5px; padding-left: 20px" colspan="2">
-                    <a onclick="onLoginClick" class="mini-button" style="width:180px;">登录</a>
+                    <a onclick="onLoginClick()" class="mini-button" style="width:180px;">登录</a>
                 </td>
             </tr>
         </table>
@@ -80,21 +79,44 @@
 <script type="text/javascript">
     mini.parse();
 
-    var loginWindow = mini.get("loginWindow");
+    var loginWindow = mini.get("url");
     loginWindow.show();
 
-    function onLoginClick(e) {
-        var form = new mini.Form("#loginWindow");
+    function onLoginClick() {
+        var form = new mini.Form("#loginForm");
 
-        form.validate();
-        if (form.isValid() == false) return;
+//        form.validate();
+//        if (form.isValid() == false) return;
+
+//        var loginName = mini.get("loginName").value;
+//        var password = mini.get("password").value;
+//
+//        window.location.href="y-home?loginName="+loginName+"&password="+password;
+
+
+
+        var data = form.getData();
+
+        jQuery.ajax({
+            url:"y-home",
+            data:data,
+            success:function (e) {
+                if (e=="success"){
+                    window.location.href="/index"
+                }else {
+                    window.location.href="/error"
+                }
+
+            }
+        })
 
         loginWindow.hide();
-        mini.loading("登录成功，马上转到系统...", "登录成功");
+        window.loading("登录成功，马上转到系统...", "登录成功");
         setTimeout(function () {
             window.location = "../outlooktree/outlooktree.html";
         }, 1500);
     }
+
     function onResetClick(e) {
         var form = new mini.Form("#loginWindow");
         form.clear();

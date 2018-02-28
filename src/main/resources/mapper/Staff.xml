@@ -44,6 +44,11 @@
         <if test="value != null and value !=''">
             WHERE staff_name LIKE '%${value}%'
         </if>
-
+    </select>
+    <select id="selectStaff" parameterType="com.ssm.domain.Staff" resultMap="staffMap">
+        SELECT
+        <include refid="staffColumns"/>
+        FROM team02_staff
+        WHERE staff_loginName = #{loginName} AND staff_Pwd = #{password};
     </select>
 </mapper>

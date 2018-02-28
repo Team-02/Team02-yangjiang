@@ -67,4 +67,12 @@ public class StaffTest {
 //        System.out.println(baseResult);
     }
 
+    @Test
+    public void selectStaff(){
+        Staff staff = new Staff();
+        staff.setPassword("123");
+        staff.setLoginName("11111111");
+        System.out.println(staffMapper.selectStaff(staff));
+    }
+
 }
