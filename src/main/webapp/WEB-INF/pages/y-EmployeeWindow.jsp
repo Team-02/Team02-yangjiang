@@ -20,8 +20,8 @@
     }
     </style>
 </head>
-<body>    
-     
+<body>
+
     <form id="form1" method="post">
         <input name="id" class="mini-hidden" />
         <fieldset style="border:solid 1px #aaa;padding:3px;">

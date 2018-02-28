@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.mapper.ProjectUnitsMapper">
+    <resultMap id="ProjectUnitsMap" type="com.ssm.domain.ProjectUnits">
+        <id property="id" column="id"/>
+        <result property="appOrgName" column="APP_ORG_NAME"/>
+    </resultMap>
+
+    <sql id="ProjectUnitsColumns">
+        id,APP_ORG_NAME
+    </sql>
+    <sql id="selectProjectUnits">
+        <where>
+            1 = 1
+            <if test="appOrgName !=null and appOrgName != ''">
+                AND APP_ORG_NAME LIKE '%${appOrgName}%'
+            </if>
+        </where>
+    </sql>
+    <select id="pageSelect" resultMap="ProjectUnitsMap" parameterType="com.ssm.page.PageBean">
+        SELECT
+        <include refid="ProjectUnitsColumns"/>
+        FROM team02.team02_project_units
+        <include refid="selectProjectUnits"/>
+        limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="intTotal" resultType="java.lang.Integer">
+        SELECT COUNT(id) FROM team02.team02_project_units
+        <if test="value != null and value !=''">
+            WHERE APP_ORG_NAME LIKE '%${value}%'
+        </if>
+    </select>
+
+    <select id="selectAll" resultMap="ProjectUnitsMap">
+        SELECT * FROM team02.team02_project_units
+    </select>
+</mapper>
