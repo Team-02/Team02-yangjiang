@@ -265,9 +265,10 @@
         //ctrl列，超连接操作按钮
         if (column.name == "ctrl") {
             e.cellStyle = "text-align:center";
-            var a = e.getValue();
-            alert(a)
-            e.cellHtml = "<a href='approve?a='"+ a +">查看</a>";
+//            var a = e.getValue();
+//            alert(a)
+//            e.cellHtml = "<a href='approve?a='"+ a +">查看</a>";
+            e.cellHtml = "<a href='approve'>查看</a>";
             <%--<a href='approve?id=${id}'>办理</a>--%>
         }
     })

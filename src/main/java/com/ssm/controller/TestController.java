@@ -111,9 +111,9 @@ public class TestController {
         return "continuehome";
     }
     @RequestMapping(value = "/approve")
-    public String approve(String a){
+    public String approve(){
 
-        System.out.println("======"+a);
+        System.out.println("======");
 
         return "approve";
     }
