@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by dllo on 18/2/4.
@@ -110,7 +111,10 @@ public class TestController {
         return "continuehome";
     }
     @RequestMapping(value = "/approve")
-    public String approve(){
+    public String approve(String a){
+
+        System.out.println("======"+a);
+
         return "approve";
     }
     @RequestMapping(value = "/approvehome")
@@ -193,7 +197,6 @@ public class TestController {
     @RequestMapping(value = "/selectproject")
     @ResponseBody
     public BaseResult<ProjectUnits> selectproject(String appOrgName,int pageIndex,int pageSize){
-        System.out.println(appOrgName);
         BaseResult<ProjectUnits> baseResult = projectUnitsService.select(appOrgName,pageIndex,pageSize);
         return baseResult;
     }

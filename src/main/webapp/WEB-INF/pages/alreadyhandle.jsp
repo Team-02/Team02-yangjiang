@@ -35,6 +35,7 @@
             width: 395px;
             height: 100%;
         }
+
         /*#toolBar{*/
         /*position: absolute;*/
         /*}*/
@@ -46,15 +47,18 @@
             text-align: right;
             width: 100px;
         }
+
         html body .user_add .mini-buttonedit-icon {
             background: url(/scripts/miniui/res/images/user_add.png) no-repeat 50% 50%;
         }
+
         html body .group_add .mini-buttonedit-icon {
             background: url(/scripts/miniui/res/images/group_add.png) no-repeat 50% 50%;
         }
-       div{
-           background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA,#E0F1FA );
-       }
+
+        div {
+            background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA, #E0F1FA);
+        }
 
         /*.high{*/
         /*height: 80px;*/
@@ -70,7 +74,8 @@
             <td colspan="4">当前位置:个人工作台 >> 待办任务</td>
         </tr>
     </table>
-    <div id="panel1" class="mini-panel" title="查询条件" iconCls="icon-add" style="width:100%;height:100%; background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA,#E0F1FA );"
+    <div id="panel1" class="mini-panel" title="查询条件" iconCls="icon-add"
+         style="width:100%;height:100%; background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA,#E0F1FA );"
          showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="false"
          collapseOnTitleClick="true">
         <table>
@@ -79,7 +84,7 @@
                 <td><input id="shentime" class="mini-datepicker" name="birthday" style="width: 400px"/></td>
                 <td class="t">关键字</td>
                 <td>
-                    <input  id="key" class="mini-textbox" style="width:400px;" onenter="onKeyEnter"/>
+                    <input id="key" class="mini-textbox" style="width:400px;" onenter="onKeyEnter"/>
                 </td>
             </tr>
             <tr>
@@ -101,7 +106,8 @@
             <table>
                 <tr>
                     <td colspan="4" class="content" style="text-align: right">
-                        <a class="mini-button" style="width:60px;" onclick="search()"><img src="/imgs/query.png" style="width: 16px;height: 16px">查询</a>
+                        <a class="mini-button" style="width:60px;" onclick="search()"><img src="/imgs/query.png"
+                                                                                           style="width: 16px;height: 16px">查询</a>
                     </td>
                 </tr>
             </table>
@@ -115,7 +121,7 @@
                 <div field="currentLink" width="120">当前环节</div>
                 <div field="applicantPerson" width="120">提报人</div>
                 <div field="applyTime" width="120">提报时间</div>
-                <div name="ctrl" width="120" headerAlign="center">办理</div>
+                <div name="ctrl" width="120" headerAlign="center">查看</div>
             </div>
         </div>
     </div>
@@ -154,12 +160,12 @@
         var key = mini.get("key").getValue();
         var key1 = mini.get("shentime").getValue();
         var time = null;
-        if (key1 !=null && key1 !=''){
-            time= formatDate(key1);
+        if (key1 != null && key1 != '') {
+            time = formatDate(key1);
         }
         var person = mini.get("btnEdit1").getText();
         var dept = mini.get("btnEdit2").getText();
-        grid.load({processNumber: key,applyTime:time,applicantPerson:person,deptName:dept});
+        grid.load({processNumber: key, applyTime: time, applicantPerson: person, deptName: dept});
     }
     function getForm() {
         var form = new mini.Form("#form1");
@@ -246,8 +252,9 @@
         //ctrl列，超连接操作按钮
         if (column.name == "ctrl") {
             e.cellStyle = "text-align:center";
-            e.cellHtml = "<a href='approve'>办理</a>";
-            <%--<a href='approve?id=${id}'>办理</a>--%>
+            var a = e.getValue().processNumber;
+            e.cellHtml = "<a href='approve?a='"+ a +">查看</a>";
+//            e.cellHtml = '<a href="javascript:approve(\'' + + '\')">办理</a>';
         }
     })
 </script>

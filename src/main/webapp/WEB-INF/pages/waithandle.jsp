@@ -120,7 +120,7 @@
                 <div field="currentLink" width="120">当前环节</div>
                 <div field="applicantPerson" width="120">提报人</div>
                 <div field="applyTime" width="120">提报时间</div>
-                <div name="ctrl" width="120" headerAlign="center">办理</div>
+                <div name="ctrl" width="120" headerAlign="center" onclick="govalue()">办理</div>
             </div>
         </div>
     </div>
@@ -242,16 +242,32 @@
         });
 
     }
+    function govalue(action) {
+        alert("start");
+        //if (action == "close") return false;
+        if (action == "ok") {
+            alert("进入action");
+            var iframe = this.getIFrameEl();
+            var data = iframe.contentWindow.GetData();
+            data = mini.clone(data);    //必须克隆
+            if (data) {
+                alert("进入data");
+                btnEdit.setValue(data.processNumber);
+                btnEdit.setText(data.applyTime);
+            }
+        }
+
+    }
 
     grid.on("drawcell", function (e) {
         var record = e.record,
             column = e.column;
-
-
         //ctrl列，超连接操作按钮
         if (column.name == "ctrl") {
             e.cellStyle = "text-align:center";
-            e.cellHtml = "<a href='approve'>办理</a>";
+            var a = e.getValue();
+            alert(a)
+            e.cellHtml = "<a href='approve?a='"+ a +">查看</a>";
             <%--<a href='approve?id=${id}'>办理</a>--%>
         }
     })
