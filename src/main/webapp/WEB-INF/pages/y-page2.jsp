@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -7,6 +8,7 @@
     <link href="../../scripts/miniui/themes/blue/skin.css" rel="stylesheet" type="text/css"/>
     <script src="../../scripts/boot.js" type="text/javascript"></script>
     <script src="../../js/fixheight.js" type="text/javascript"></script>
+    <script src="../../js/jquery.cookie.js" type="text/javascript"></script>
     <title>Title</title>
     <style type="text/css">
         table, td {
@@ -43,6 +45,7 @@
         <td colspan="4">当前位置: 科研项目 >> 项目其他信息</td>
     </tr>
 </table>
+<div id="form2">
 <div id="panel1" class="mini-panel" title="技术第一负责人信息" iconCls="icon-add"
      style="width:100%;height:auto; "
      showToolbar="true" showCollapseButton="true" showFooter="true" allowResize="false"
@@ -51,7 +54,7 @@
         <tr>
             <td class="d">姓名、专业经历和能力简述</td>
             <td>
-                <input class="mini-textarea" style="width:100%;height:60px;"/>
+                <input name="primeUserDesc"  class="mini-textarea" style="width:100%;height:60px;"/>
             </td>
         </tr>
     </table>
@@ -80,25 +83,25 @@
         <tr>
             <td class="d">预计产权说明</td>
             <td>
-                <input class="mini-textarea" style="width:100%;height:60px;"/>
+                <input name="rightDesc"  class="mini-textarea" style="width:100%;height:60px;"/>
             </td>
         </tr>
         <tr>
             <td class="d">经济效益</td>
             <td>
-                <input class="mini-textarea" style="width:100%;height:60px;"/>
+                <input name="benefistDesc" class="mini-textarea" style="width:100%;height:60px;"/>
             </td>
         </tr>
         <tr>
             <td class="d">固定资产</td>
             <td>
-                <input class="mini-textarea" style="width:100%;height:60px;"/>
+                <input  class="mini-textarea" name="fixedAssets" style="width:100%;height:60px;"/>
             </td>
         </tr>
         <tr>
             <td class="d">验收标准</td>
             <td>
-                <input class="mini-textarea" style="width:100%;height:60px;"/>
+                <input name="acceptStand" class="mini-textarea" style="width:100%;height:60px;"/>
             </td>
         </tr>
     </table>
@@ -125,7 +128,7 @@
             <td class="d">审批(部门经理)<span style="color:red">※</span></td>
             <td>
                 <input allowInput="false" id="btnEdit1" class="mini-buttonedit user_add"
-                       onbuttonclick="onButtonEdit" name="a" textName="b" style="width: 100%"/>
+                       onbuttonclick="onButtonEdit" name="createStaffNo" textName="createStaffNam" style="width: 100%"/>
             </td>
         </tr>
     </table>
@@ -133,11 +136,10 @@
 
 <table>
     <tr>
-        <td class="d" colspan="4" style="background-color: white"><input type="button" value="提交"></td>
+        <td class="d" colspan="4" style="background-color: white"><input type="button" value="提交" onclick="onClick()"></td>
     </tr>
 </table>
-
-
+</div>
 <script>
 
     // 加载mini组件,后面的get方法才好用
@@ -168,17 +170,24 @@
 
     }
 
-    //提交数据
-    var data = form.getData();
-    var json = mini.encode(data);
+    function onClick() {
+    var baseData = $.cookie("form1");
+    var baseData = JSON.parse(baseData);
+    var form = new mini.Form("#form2");
+    var otherData = form.getData();      //获取表单多个控件的数据
+    var json = mini.encode(otherData);   //序列化成JSON
+    var json = JSON.parse(json);
+    var data = $.extend(baseData,json);
     $.ajax({
-        url: "../data/FormService.aspx?method=SaveData",
-        type: "post",
-        data: {submitData: json},
+        url: "/projectBase",
+        type:"post",
+        data:data,
         success: function (text) {
             alert("提交成功，返回结果:" + text);
         }
     });
+    }
+
 
 </script>
 </body>

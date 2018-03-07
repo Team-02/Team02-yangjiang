@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.UUID;
 
 /**
  * Created by dllo on 18/2/4.
@@ -25,15 +26,15 @@ public class TestController {
     private ProcessService processService;
     @Resource
     private ProjectUnitsService projectUnitsService;
-    @RequestMapping(value = {"","/"})
-    public String index(){
-        return "y-home";
-    }
+    @Resource
+    private JointUnitService jointUnitService;
+    @Resource
+    private ProjectBaseService projectBaseService;
+
     @RequestMapping(value = {"/alreadyhandle"})
     public String alreadyhandle(){
         return "alreadyhandle";
     }
-
     @RequestMapping(value = {"/hello"})
     public String hello(){
         return "hello";
@@ -63,44 +64,12 @@ public class TestController {
         return "y-tabs";
     }
 
-    @RequestMapping(value = "/y-page1")
-    public String page1(){
-        return "y-page1";
-    }
-    @RequestMapping(value = "/y-page2")
-    public String page2(){
-        return "y-page2";
-    }
-
-    @RequestMapping(value = "/y-home")
-    @ResponseBody
-    public String yhome(Staff staff){
-
-        System.out.println("--+++++--"+staff);
-        Staff staff1 = staffService.selectStaff(staff);
-        if (staff1!= null){
-            return "success";
-        }else {
-            return "error";
-        }
-    }
-
-    @RequestMapping(value = "/index")
-    public String index1(){
-        return "index";
-    }
 
     @RequestMapping(value = "/selectstaff")
     public String selectstaff(){
         return "selectstaff";
     }
 
-    @RequestMapping(value = "/select")
-    @ResponseBody
-    public BaseResult<Staff> select(String name,int pageIndex,int pageSize){
-        BaseResult<Staff> baseResult = staffService.select(name,pageIndex,pageSize);
-        return baseResult;
-    }
     @RequestMapping(value = "/continueproject")
     public String continueproject(){
         return "continueproject";
@@ -155,6 +124,49 @@ public class TestController {
         return "selectdepartment";
     }
 
+
+    @RequestMapping(value = "/y-page1")
+    public String page1(){
+        return "y-page1";
+    }
+    @RequestMapping(value = "/y-page2")
+    public String page2(){
+        return "y-page2";
+    }
+
+    @RequestMapping(value = "/projectBase")
+    public String projectBase(ProjectBase projectBase){
+        System.out.println(projectBase+"************");
+        String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+        projectBase.setProhId(uuid);
+        projectBaseService.insertProjectBase(projectBase);
+        return "index";
+    }
+
+    @RequestMapping(value = "/y-page1-1")
+    public String page1_1(){
+        return "y-page1-1";
+    }
+
+
+    @RequestMapping(value = "/y-page1-2")
+    public String page1_2(){
+        return "y-page1-2";
+    }
+
+    @RequestMapping(value = "/y-EmployeeWindow")
+    public String EmployeeWindow(){
+        return "y-EmployeeWindow";
+    }
+
+
+    @RequestMapping(value = "/select")
+    @ResponseBody
+    public BaseResult<Staff> select(String name,int pageIndex,int pageSize){
+        BaseResult<Staff> baseResult = staffService.select(name,pageIndex,pageSize);
+        return baseResult;
+    }
+
     @RequestMapping(value = "/selectdepart")
     @ResponseBody
     public BaseResult<Department> selectdepart(String deptName, int pageIndex, int pageSize){
@@ -167,19 +179,10 @@ public class TestController {
                                              String applicantPerson,String deptName,
                                              String processName,String print,
                                              int pageIndex, int pageSize){
-        System.out.println(processName);
         BaseResult<Process> baseResult = processService.select(processNumber,applyTime,applicantPerson,
                 deptName,processName,print,pageIndex,pageSize);
         return baseResult;
     }
-
-    @RequestMapping(value = "/y-EmployeeWindow")
-    public String EmployeeWindow(){
-        return "y-EmployeeWindow";
-    }
-
-    @Resource
-    private JointUnitService jointUnitService;
 
     @RequestMapping(value = "/selectjoint")
     @ResponseBody
@@ -188,12 +191,6 @@ public class TestController {
         return baseResult;
     }
 
-    @RequestMapping(value = "/y-page1-2")
-    public String page1_2(){
-        return "y-page1-2";
-    }
-
-
     @RequestMapping(value = "/selectproject")
     @ResponseBody
     public BaseResult<ProjectUnits> selectproject(String appOrgName,int pageIndex,int pageSize){
@@ -201,9 +198,30 @@ public class TestController {
         return baseResult;
     }
 
-    @RequestMapping(value = "/y-page1-1")
-    public String page1_1(){
-        return "y-page1-1";
+
+    //登录验证
+    @RequestMapping(value = "/y-home")
+    @ResponseBody
+    public String yhome(Staff staff){
+        //进行数据库查询
+        Staff staff1 = staffService.selectStaff(staff);
+        if (staff1!= null){
+            return "success";
+        }else {
+            return "error";
+        }
+    }
+
+    //登录验证成功后跳转页面
+    @RequestMapping(value = "/index")
+    public String index1(){
+        return "index";
+    }
+
+    //启动页
+    @RequestMapping(value = {"","/"})
+    public String index(){
+        return "y-home";
     }
 
 }

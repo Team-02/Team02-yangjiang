@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.mapper.ProjectBaseMapper">
+
+    <resultMap id="ProjectBaseMap" type="com.ssm.domain.ProjectBase">
+        <id property="prohId" column="PROJ_ID"/>
+        <result property="progName" column="PROJ_NAME"/>
+        <result property="progType" column="PROJ_TYPE"/>
+        <result property="appOrgNo" column="APP_ORG_NO"/>
+        <result property="appOrgName" column="APP_ORG_NAME"/>
+        <result property="UnteAppOrgNo" column="UNITE_APP_ORG_NO"/>
+        <result property="UnteAppOrgName" column="UNITE_APP_ORG_NAME"/>
+        <result property="cycle" column="CYCLE"/>
+        <result property="totalBudget" column="TOTAL_BUDGET"/>
+        <result property="purpose" column="PURPOSE"/>
+        <result property="safeDesc" column="SAFE_DESC"/>
+        <result property="peliableDesc" column="RELIABLE_DESC"/>
+        <result property="econDesc" column="ECON_DESC"/>
+        <result property="otherDesc" column="OTHER_DESC"/>
+        <result property="achievementDesc" column="ACHIEVEMENT_DESC"/>
+        <result property="realUser" column="REAL_USER"/>
+        <result property="potentialUser" column="POTENTIAL_USER"/>
+        <result property="content" column="CONTENT"/>
+        <result property="primeStaffNo" column="PRIME_STAFF_NO"/>
+        <result property="primeUserDesc" column="PRIME_USER_DESC"/>
+        <result property="rightDesc" column="RIGHT_DESC"/>
+        <result property="benefistDesc" column="BENEFITS_DESC"/>
+        <result property="fixedAssets" column="FIXED_ASSETS"/>
+        <result property="acceptStand" column="ACCEPT_STAND"/>
+        <result property="engineerEvaluate" column="ENGINEER_EVALUATE"/>
+        <result property="accordEvaluate" column="ACCORD_EVALUATE"/>
+        <result property="applicationEvaluate" column="APPLICATION_EVALUATE"/>
+        <result property="totalEvaluate" column="TOTAL_EVALUATE"/>
+        <result property="pmsRequite" column="PMS_REQUIRE"/>
+        <result property="advice" column="ADVICE"/>
+        <result property="effectFlag" column="EFFECT_FLAG"/>
+        <result property="createStaffNo" column="CREATE_STAFF_NO"/>
+        <result property="createStaffNam" column="CREATE_STAFF_NAME"/>
+        <result property="createDate" column="CREATE_DATE"/>
+    </resultMap>
+
+    <sql id="projectBaseColumns">
+       PROJ_ID,PROJ_NAME, PROJ_TYPE,APP_ORG_NO,APP_ORG_NAME,UNITE_APP_ORG_NO,UNITE_APP_ORG_NAME,CYCLE,TOTAL_BUDGET,PURPOSE,SAFE_DESC,RELIABLE_DESC,ECON_DESC,OTHER_DESC,ACHIEVEMENT_DESC,REAL_USER,POTENTIAL_USER,CONTENT,PRIME_STAFF_NO,PRIME_USER_DESC,RIGHT_DESC,BENEFITS_DESC,FIXED_ASSETS,ACCEPT_STAND,ENGINEER_EVALUATE,ACCORD_EVALUATE,APPLICATION_EVALUATE,TOTAL_EVALUATE,PMS_REQUIRE,ADVICE,EFFECT_FLAG,CREATE_STAFF_NO,CREATE_STAFF_NAME,CREATE_DATE
+    </sql>
+
+    <insert id="insertProjectBase" parameterType="com.ssm.domain.ProjectBase">
+        INSERT INTO rdms_proj_base(
+        <include refid="projectBaseColumns"/>)
+        VALUES (#{prohId},#{progName},#{progType},#{appOrgNo},#{appOrgName},#{UnteAppOrgNo},#{UnteAppOrgName},#{cycle},#{totalBudget},#{purpose},#{safeDesc},#{peliableDesc},#{econDesc},#{otherDesc},#{achievementDesc},#{realUser},#{potentialUser},#{content},#{primeStaffNo},#{primeUserDesc},#{rightDesc},#{benefistDesc},#{fixedAssets},#{acceptStand},#{engineerEvaluate},#{accordEvaluate},#{applicationEvaluate},#{totalEvaluate},#{pmsRequite},#{advice},#{effectFlag},#{createStaffNo},#{createStaffNam},#{createDate})
+    </insert>
+</mapper>
