@@ -149,7 +149,7 @@
 
         var btnEdit = this;
         mini.open({
-            url: "../../html/SelectGridWindow.html",
+            url: "selectDeptManager",
             title: "选择部门经理",
             width: 650,
             height: 380,
@@ -183,11 +183,14 @@
         type:"post",
         data:data,
         success: function (text) {
-            alert("提交成功，返回结果:" + text);
+            if(text == "success"){
+                alert("提交成功");
+            }else {
+                alert("提交失败");
+            }
         }
     });
     }
-
 
 </script>
 </body>

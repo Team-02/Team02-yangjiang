@@ -133,12 +133,13 @@ public class TestController {
     }
 
     @RequestMapping(value = "/projectBase")
+    @ResponseBody
     public String projectBase(ProjectBase projectBase){
         System.out.println(projectBase+"************");
         String uuid = UUID.randomUUID().toString().replaceAll("-", "");
         projectBase.setProhId(uuid);
         projectBaseService.insertProjectBase(projectBase);
-        return "index";
+        return "success";
     }
 
     @RequestMapping(value = "/y-page1-1")

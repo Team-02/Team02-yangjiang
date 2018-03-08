@@ -16,4 +16,7 @@ public interface StaffMapper {
     Integer intTotal(String name);
 
     Staff selectStaff(Staff staff);
+
+    //按角色查询员工
+    List<Staff> selectStaffByRole(Integer id);
 }
