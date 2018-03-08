@@ -48,12 +48,13 @@
         div{
             background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA,#E0F1FA );
         }
+
     </style>
 
 
 </head>
 <body>
-<table border="0" cellpadding="1" cellspacing="2">
+<table id="win1" border="0" cellpadding="1" cellspacing="2">
     <table>
         <tr>
             <td colspan="4">当前位置:科研项目管理 >> 审批</td>
@@ -67,7 +68,7 @@
         <table>
             <tr>
                 <td class="d">项目名称<span style="color:red">※</span></td>
-                <td colspan="3"><input type="text"></td>
+                <td colspan="3"><input type="text" value="${processNumber}"></td>
             </tr>
             <tr>
                 <td class="d">项目来源<span style="color:red">※</span></td>
@@ -223,6 +224,11 @@
 
             }
         });
+
+    }
+    function showAtPos() {
+        var win = mini.get("win1");
+        win.showAtPos(200,400);
 
     }
     function onButtonEdit2(e) {

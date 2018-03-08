@@ -24,12 +24,14 @@
             width: 100%;
 
         }
+
         td {
             width: auto;
-            border:1px solid white;
+            border: 1px solid white;
         }
-        tr{
-            border:1px solid white;
+
+        tr {
+            border: 1px solid white;
         }
 
         input {
@@ -64,6 +66,9 @@
         div {
             background: linear-gradient(#E0F1FA, #D5EDFA, #C5E7FA, #D5EDFA, #E0F1FA);
         }
+        body{
+            position: relative;
+        }
     </style>
 </head>
 <body>
@@ -84,7 +89,7 @@
                 <td><input id="shentime" class="mini-datepicker" name="birthday" style="width: 400px"/></td>
                 <td class="t">关键字</td>
                 <td>
-                        <input  id="key" class="mini-textbox" style="width:400px;" onenter="onKeyEnter"/>
+                    <input id="key" class="mini-textbox" style="width:400px;" onenter="onKeyEnter"/>
                 </td>
             </tr>
             <tr>
@@ -102,11 +107,12 @@
         </table>
     </div>
     <div>
-        <div  style="width: 100%;border-bottom: 0px">
+        <div style="width: 100%;border-bottom: 0px">
             <table>
                 <tr>
                     <td colspan="4" class="content" style="text-align: right">
-                            <a class="mini-button" style="width:60px;" onclick="search()"><img src="/imgs/query.png" style="width: 16px;height: 16px">查询</a>
+                        <a class="mini-button" style="width:60px;" onclick="search()"><img src="/imgs/query.png"
+                                                                                           style="width: 16px;height: 16px">查询</a>
                     </td>
                 </tr>
             </table>
@@ -114,7 +120,7 @@
         <div id="datagrid1" class="mini-datagrid" style="width: 100%;" url="/selectprocess">
             <div property="columns">
                 <div type="checkcolumn"></div>
-                <div field="processNumber" width="120">流程编号</div>
+                <div field="processNumber" id="number" width="120">流程编号</div>
                 <div field="processName" width="120">流程名称</div>
                 <div field="deptName" width="120">所属部门</div>
                 <div field="currentLink" width="120">当前环节</div>
@@ -129,7 +135,7 @@
     /*加载mini组件 后面get方法才好用*/
     mini.parse();
 
-//    mini.formatDate ( Date, "yyyy-MM-dd HH:mm:ss" );
+    //    mini.formatDate ( Date, "yyyy-MM-dd HH:mm:ss" );
     var grid = mini.get("datagrid1");
     grid.load();
     //动态设置URL
@@ -146,12 +152,12 @@
         var key = mini.get("key").getValue();
         var key1 = mini.get("shentime").getValue();
         var time = null;
-        if (key1 !=null && key1 !=''){
-         time= formatDate(key1);
+        if (key1 != null && key1 != '') {
+            time = formatDate(key1);
         }
         var person = mini.get("btnEdit1").getText();
         var dept = mini.get("btnEdit2").getText();
-        grid.load({processNumber: key,applyTime:time,applicantPerson:person,deptName:dept});
+        grid.load({processNumber: key, applyTime: time, applicantPerson: person, deptName: dept});
     }
     /*将中国标准时间更改为年-月-日*/
     function formatTen(num) {
@@ -233,7 +239,7 @@
                     var data = iframe.contentWindow.GetData();
                     data = mini.clone(data);    //必须克隆
                     if (data) {
-                        btnEdit.setValue(data.deptId);
+                        btnEdit.setValue(data.processNumber);
                         btnEdit.setText(data.deptName);
                     }
                 }
@@ -242,33 +248,66 @@
         });
 
     }
-    function govalue(action) {
-        alert("start");
-        //if (action == "close") return false;
-        if (action == "ok") {
-            alert("进入action");
-            var iframe = this.getIFrameEl();
-            var data = iframe.contentWindow.GetData();
-            data = mini.clone(data);    //必须克隆
-            if (data) {
-                alert("进入data");
-                btnEdit.setValue(data.processNumber);
-                btnEdit.setText(data.applyTime);
-            }
+
+    /*小页面编辑*/
+    function edit() {
+
+        var row = grid.getSelected();
+        if (row) {
+            mini.open({
+                url: "approve",
+                title: "办理",
+                width: 1462,
+                height: 775,
+                allowResize: false,//允许尺寸调节
+                allowDrag: false,//允许拖拽位置
+                screenX: 210,
+                screenY: 20,
+
+                onload: function () {
+                    var iframe = this.getIFrameEl();
+                    var data = { action: "edit",
+                        processNumber: row.processNumber,
+                        processName:row.processName,
+                        deptName:row.deptName,
+                        currentLink:row.currentLink,
+                        applicantPerson:row.applicantPerson,
+                        applyTime:row.applyTime,
+
+                    };
+                    alert(data.processNumber);
+                    alert(data.processName);
+                    alert(data.deptName);
+                    alert(data.currentLink);
+                    alert(data.applicantPerson);
+                    alert(data.applyTime);
+                    iframe.contentWindow.SetData(data);
+
+                },
+                ondestroy: function (action) {
+                    //var iframe = this.getIFrameEl();
+
+                    grid.reload();
+
+                }
+            });
+
+        } else {
+            alert("请选中一条记录");
         }
 
     }
-
     grid.on("drawcell", function (e) {
         var record = e.record,
-            column = e.column;
+            column = e.column,
+            field = e.field,
+            value = e.value;
+
         //ctrl列，超连接操作按钮
         if (column.name == "ctrl") {
             e.cellStyle = "text-align:center";
-//            var a = e.getValue();
-//            alert(a)
-//            e.cellHtml = "<a href='approve?a='"+ a +">查看</a>";
-            e.cellHtml = "<a href='approve'>查看</a>";
+            e.cellHtml = '<a href="javascript:edit(\'' + record.processNumber + '\')">办理</a>'
+//            e.cellHtml = "<a href='approve'>查看</a>";
             <%--<a href='approve?id=${id}'>办理</a>--%>
         }
     })

@@ -80,10 +80,8 @@ public class TestController {
         return "continuehome";
     }
     @RequestMapping(value = "/approve")
-    public String approve(){
-
-        System.out.println("======");
-
+    public String approve(String processNumber){
+        System.out.println("processNumber"+processNumber);
         return "approve";
     }
     @RequestMapping(value = "/approvehome")

@@ -252,8 +252,8 @@
         //ctrl列，超连接操作按钮
         if (column.name == "ctrl") {
             e.cellStyle = "text-align:center";
-            var a = e.getValue().processNumber;
-            e.cellHtml = "<a href='approve?a='"+ a +">查看</a>";
+            var processNumber = grid.getSelected();
+            e.cellHtml = "<a href='approve?processNumber='"+ processNumber +">查看</a>";
 //            e.cellHtml = '<a href="javascript:approve(\'' + + '\')">办理</a>';
         }
     })
