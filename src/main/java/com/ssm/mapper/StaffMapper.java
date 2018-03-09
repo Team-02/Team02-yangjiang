@@ -19,4 +19,6 @@ public interface StaffMapper {
 
     //按角色查询员工
     List<Staff> selectStaffByRole(Integer id);
+
+    Staff selectByStaffLoginName(String loginName);
 }

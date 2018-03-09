@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by dllo on 18/2/5.
@@ -37,5 +38,20 @@ public class StaffServiceImpl implements StaffService {
     @Override
     public Staff selectStaff(Staff staff) {
         return staffMapper.selectStaff(staff);
+    }
+
+    @Override
+    public Set<String> getRoles(String staffName) {
+        return null;
+    }
+
+    @Override
+    public Set<String> getPermissions(String staffName) {
+        return null;
+    }
+
+    @Override
+    public Staff selectByStaffLoginName(String staffLoginName) {
+        return staffMapper.selectByStaffLoginName(staffLoginName);
     }
 }

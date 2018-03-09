@@ -4,6 +4,10 @@ import com.ssm.domain.*;
 import com.ssm.domain.Process;
 import com.ssm.mapper.BimsStoreMapper;
 import com.ssm.service.*;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -212,13 +216,34 @@ public class TestController {
     @RequestMapping(value = "/y-home")
     @ResponseBody
     public String yhome(Staff staff){
+
+
+        //shiro认证
+        /*1.获得当前的用户对象*/
+        Subject currentUser = SecurityUtils.getSubject();
+         /*2.创建用户名,密码令牌*/
+        UsernamePasswordToken token = new UsernamePasswordToken(staff.getLoginName(),staff.getPassword());
+         /*3.执行shiro认证*/
+         try {
+             currentUser.login(token);
+         }catch (AuthenticationException e){
+             e.printStackTrace();
+             System.out.println("认证失败返回登录界面");
+             return "error";
+         }
+         return "success";
+
+
+
         //进行数据库查询
-        Staff staff1 = staffService.selectStaff(staff);
-        if (staff1!= null){
-            return "success";
-        }else {
-            return "error";
-        }
+//        Staff staff1 = staffService.selectStaff(staff);
+//        if (staff1!= null){
+//            return "success";
+//        }else {
+//            return "error";
+//        }
+
+
     }
 
     //登录验证成功后跳转页面

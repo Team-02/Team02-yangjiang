@@ -23,6 +23,7 @@
                 </if>
             </where>
     </sql>
+
     <insert id="insertStaff" parameterType="com.ssm.domain.Staff">
         INSERT INTO team02_staff (
         <include refid="staffColumns"/>)
@@ -50,5 +51,10 @@
         <include refid="staffColumns"/>
         FROM team02_staff
         WHERE staff_loginName = #{loginName} AND staff_Pwd = #{password};
+    </select>
+
+    <select id="selectByStaffLoginName" resultMap="staffMap">
+        SELECT <include refid="staffColumns"/>
+        FROM team02_staff sta WHERE sta.staff_loginName=#{loginName }
     </select>
 </mapper>

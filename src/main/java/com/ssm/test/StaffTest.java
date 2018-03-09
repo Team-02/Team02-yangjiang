@@ -75,4 +75,9 @@ public class StaffTest {
         System.out.println(staffMapper.selectStaff(staff));
     }
 
+    @Test
+    public void selectByStaffLoginName(){
+        System.out.println(staffMapper.selectByStaffLoginName("123456"));
+    }
+
 }
