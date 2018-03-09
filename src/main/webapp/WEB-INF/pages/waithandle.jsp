@@ -119,7 +119,7 @@
                 <div field="deptName" width="120">所属部门</div>
                 <div field="currentLink" width="120">当前环节</div>
                 <div field="applicantPerson" width="120">提报人</div>
-                <div field="applyTime" width="120">提报时间</div>
+                <div field="applyTime" width="120" >提报时间</div>
                 <div name="ctrl" width="120" headerAlign="center">办理</div>
             </div>
         </div>
