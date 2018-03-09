@@ -37,4 +37,5 @@ public class BaseResult<T> {
                 ", data=" + data +
                 '}';
     }
+
 }

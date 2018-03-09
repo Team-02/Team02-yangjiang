@@ -2,14 +2,24 @@ package com.ssm.controller;
 
 import com.ssm.domain.*;
 import com.ssm.domain.Process;
+import com.ssm.mapper.BimsStoreMapper;
 import com.ssm.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RequestParam;
+
+import org.springframework.web.bind.annotation.RequestMethod;
+
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+
+import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+
 import java.util.UUID;
 
 /**
@@ -222,5 +232,59 @@ public class TestController {
     public String index(){
         return "y-home";
     }
+
+    @Resource
+    private BimsStoreService bimsStoreService;
+
+    @RequestMapping(value = "/selectbimsStore")
+    @ResponseBody
+    public BaseResult<BimsStore> selectbimsStore(String bimsStoreName,String manageStaffName,int pageIndex,int pageSize){
+        BimsStore bimsStore = new BimsStore();
+        System.out.println(bimsStore.getCreateDate());
+        BaseResult<BimsStore> baseResult = bimsStoreService.select(bimsStoreName,manageStaffName,pageIndex,pageSize);
+        return baseResult;
+    }
+
+
+    @RequestMapping(value = "/y-satemanager-1")
+    public String satemanager_1(){
+        return "y-satemanager-1";
+    }
+
+    @RequestMapping(value = "/save")
+    public String addBimsStore(BimsStore bimsStore){
+        if (bimsStore != null) {
+            bimsStoreService.save(bimsStore);
+        }
+        return "/satemanager";
+    }
+
+    @Resource
+    private RayUserService rayUserService;
+
+    @RequestMapping(value = "/selectRayUser")
+    @ResponseBody
+    public BaseResult<RayUser> selectbimsStore(String staffName, String passcardNo,String orgName,String staffNo,int pageIndex,int pageSize){
+
+        BaseResult<RayUser> baseResult = rayUserService.select(staffName,passcardNo,orgName,staffNo,pageIndex,pageSize);
+        return baseResult;
+    }
+
+
+
+
+    @RequestMapping(value = "/save",method = RequestMethod.POST)
+    public ModelAndView save(BimsStore bimsStore){
+        ModelAndView modelAndView = new ModelAndView();
+        String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+        bimsStore.setBimsStoreId(uuid);
+        if (bimsStore != null) {
+            bimsStoreService.save(bimsStore);
+        }
+        modelAndView.setViewName("/y-EmployeeWindow");
+        return modelAndView;
+    }
+
+
 
 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.mapper.RayUserMapper">
+    <resultMap id="rayUserMap" type="com.ssm.domain.RayUser">
+        <id property="rayStaffId" column="RAY_STAFF_ID"/>
+        <result property="staffNo" column="STAFF_NO"/>
+        <result property="staffName" column="STAFF_NAME"/>
+        <result property="passcardNo" column="PASSCARD_NO"/>
+        <result property="orgId" column="ORG_ID"/>
+        <result property="orgName" column="ORG_NAME"/>
+        <result property="rtRank" column="RT_RANK"/>
+        <result property="rtNo" column="RT_NO"/>
+        <result property="effectBegDate" column="EFFECT_BEG_DATE"/>
+        <result property="effectEndDate" column="EFFECT_END_DATE"/>
+        <result property="effectFlag" column="EFFECT_FLAG"/>
+        <result property="createStaffNo" column="CREATE_STAFF_NO"/>
+        <result property="createStaffName" column="CREATE_STAFF_NAME"/>
+        <result property="createDate" column="CREATE_DATE"/>
+    </resultMap>
+    <sql id="rayUserColumns">
+        RAY_STAFF_ID,STAFF_NO,STAFF_NAME,PASSCARD_NO,ORG_ID,ORG_NAME,RT_RANK,RT_NO,EFFECT_BEG_DATE,EFFECT_END_DATE,EFFECT_FLAG,CREATE_STAFF_NO,CREATE_STAFF_NAME,CREATE_DATE
+    </sql>
+    <sql id="selectRayUser">
+        <where>
+            1 = 1
+            <if test="staffName !=null and staffName != ''">
+                AND STAFF_NAME LIKE '%${staffName}%'
+            </if>
+            <if test="passcardNo !=null and passcardNo !=''">
+                AND PASSCARD_NO = '${passcardNo}'
+            </if>
+            <if test="orgName !=null and orgName !=''">
+                AND ORG_ID = '${orgName}'
+            </if>
+            <if test="staffNo !=null and staffNo !=''">
+                AND STAFF_NO = '${staffNo}'
+            </if>
+        </where>
+    </sql>
+    <select id="pageSelect" resultMap="rayUserMap" parameterType="com.ssm.page.PageBean">
+        SELECT
+        <include refid="rayUserColumns"/>
+        FROM team02_ray_user
+        <include refid="selectRayUser"/>
+        limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="intTotal" resultType="java.lang.Integer" parameterType="com.ssm.domain.RayUser">
+        SELECT COUNT(RAY_STAFF_ID) FROM team02_ray_user
+        <include refid="selectRayUser"/>
+    </select>
+
+    <select id="selectAll" resultMap="rayUserMap">
+        SELECT
+        <include refid="rayUserColumns"/>
+        FROM team02_ray_user
+    </select>
+</mapper>

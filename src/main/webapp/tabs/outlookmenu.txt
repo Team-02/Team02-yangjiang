@@ -1,14 +1,14 @@
 ﻿[
 	{ id: "user", text: "个人中心", iconCls: "icon-add"},
-	{ id: "addRight", pid: "user", text: "个人工作平台", iconCls: "Note", url: "/home", iconPosition: "top" },
+	{ id: "addRight", pid: "user", text: "个人工作平台", url: "/home"},
 	
 	{ id: "keyan", text: "科研项目管理"},
 	{ id: "ky", pid: "keyan", text: "科研项目申报与评审", url: "/y-tabs"},
 	{ id: "kychengjie", pid: "keyan", text: "承接外部科技项目申报", url: "/continuehome"},
 	{ id: "editUser",  text: "综合管理"},
-	{ id: "addRighte", pid: "editUser", text: "任务管理", iconCls: "Note", url: "/comqueryhome", iconPosition: "top" },
-	{ id: "addRighte", pid: "editUser", text: "卫星库管理人管理", iconCls: "Note", url: "/satemanager", iconPosition: "top" },
-	{ id: "addRighte", pid: "editUser", text: "射线探伤人员管理", iconCls: "Note", url: "/scaldmanager", iconPosition: "top" },
-	{ id: "addRighte", pid: "editUser", text: "厂房管理", iconCls: "Note", url: "/plantmanager", iconPosition: "top" },
-		{ id: "addRighte", pid: "editUser", text: "机组管理", iconCls: "Note", url: "/unitmanager", iconPosition: "top" },
+	{ id: "addRighte", pid: "editUser", text: "任务管理", url: "/comqueryhome"},
+	{ id: "addRighte", pid: "editUser", text: "卫星库管理人管理",  url: "/satemanager"},
+	{ id: "addRighte", pid: "editUser", text: "射线探伤人员管理",  url: "/scaldmanager",},
+	{ id: "addRighte", pid: "editUser", text: "厂房管理",  url: "/plantmanager"},
+		{ id: "addRighte", pid: "editUser", text: "机组管理", url: "/unitmanager" },
 ]

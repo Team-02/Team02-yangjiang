@@ -43,7 +43,61 @@ public class PageBean<T> {
         this.uniteAppOrgName = uniteAppOrgName;
     }
 
+//    卫星库
+    private String bimsStoreName;
+    private String manageStaffName;
 
+    public String getBimsStoreName() {
+        return bimsStoreName;
+    }
+
+    public void setBimsStoreName(String bimsStoreName) {
+        this.bimsStoreName = bimsStoreName;
+    }
+
+    public String getManageStaffName() {
+        return manageStaffName;
+    }
+
+    public void setManageStaffName(String manageStaffName) {
+        this.manageStaffName = manageStaffName;
+    }
+
+
+//    射线探伤
+    private String staffName,passcardNo,orgName,staffNo;
+
+    public String getStaffName() {
+        return staffName;
+    }
+
+    public void setStaffName(String staffName) {
+        this.staffName = staffName;
+    }
+
+    public String getPasscardNo() {
+        return passcardNo;
+    }
+
+    public void setPasscardNo(String passcardNo) {
+        this.passcardNo = passcardNo;
+    }
+
+    public String getOrgName() {
+        return orgName;
+    }
+
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
+    }
+
+    public String getStaffNo() {
+        return staffNo;
+    }
+
+    public void setStaffNo(String staffNo) {
+        this.staffNo = staffNo;
+    }
 
     private String deptName;
     private String name;//条件语句中的关键字
